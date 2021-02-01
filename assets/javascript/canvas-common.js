@@ -10,6 +10,15 @@ let contextDraft = canvasDraft.getContext("2d");
 let currentFunction;
 let dragging = false;
 
+
+// for saving image with white background
+// contextReal.fillStyle = "#fff)";
+// contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
+
+// contextDraft.fillStyle = "#fff";
+// contextDraft.fillRect(0, 0, canvasDraft.width, canvasDraft.height);
+
+
 $("#canvas-draft").mousedown(function (e) {
   let mouseX = e.offsetX;
   let mouseY = e.offsetY;
@@ -49,11 +58,11 @@ $("#canvas-draft").mouseenter(function (e) {
 /** # Class (all classes will have these methods) #
 /*  ====================== */
 class PaintFunction {
-  constructor() {}
-  onMouseDown() {}
-  onDragging() {}
-  onMouseMove() {}
-  onMouseUp() {}
-  onMouseLeave() {}
-  onMouseEnter() {}
+  constructor() { }
+  onMouseDown() { }
+  onDragging() { }
+  onMouseMove() { }
+  onMouseUp() { }
+  onMouseLeave() { }
+  onMouseEnter() { }
 }

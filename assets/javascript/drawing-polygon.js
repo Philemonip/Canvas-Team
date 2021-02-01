@@ -1,0 +1,90 @@
+class DrawingPolygon extends PaintFunction {
+    constructor(contextReal, contextDraft) {
+        super();
+        this.contextDraft = contextDraft;
+        this.contextReal = contextReal;
+        this.clickNum = 0;
+        this.escape = false;
+    }
+
+    onMouseDown(coord, event) {
+
+        // this.contextReal.fillStyle = "#1319";
+        // this.contextReal.beginPath();
+        // this.contextDraft.setLineDash([]);
+        // this.contextReal.setLineDash([]);
+        this.contextDraft.lineWidth = 5;
+        this.contextReal.lineWidth = 5;
+
+
+        if (this.clickNum === 0) {
+
+            this.origX = coord[0];
+            this.origY = coord[1];
+            this.contextReal.beginPath();
+            this.contextReal.moveTo(this.origX, this.origY);
+        }
+        dragging = true;
+    }
+
+    onMouseUp(coord, event) {
+        if (this.clickNum === 0) {
+            this.destX = coord[0];
+            this.destY = coord[1];
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            this.drawPatternReal(this.destX, this.destY, coord[0], coord[1]);
+            this.clickNum = 1;
+
+        } else if (this.clickNum === 1) {
+            if (Math.pow((this.origX - coord[0]), 2) < 700 && Math.pow((this.origY - coord[1]), 2) < 2000) {
+                dragging = false;
+                this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+                this.contextReal.lineTo(this.origX, this.origY);
+                this.contextReal.stroke();
+                this.clickNum = 0;
+                startDraw()
+            } else {
+                this.destX = coord[0];
+                this.destY = coord[1];
+                dragging = true;
+                this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+                this.drawPatternReal(this.destX, this.destY, coord[0], coord[1]);
+
+            }
+        }
+    }
+
+    onDragging(coord, event) {
+
+        if (this.clickNum === 0) {
+            this.drawPatternDraft(this.origX, this.origY, coord[0], coord[1]);
+        } else if (this.clickNum === 1) {
+            this.drawPatternDraft(this.destX, this.destY, coord[0], coord[1]);
+        }
+    }
+
+
+    drawPatternDraft(xStart, yStart, xEnd, yEnd) {
+        this.contextDraft.closePath();
+        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        this.contextDraft.beginPath();
+        this.contextDraft.moveTo(xStart, yStart);
+        this.contextDraft.lineTo(xEnd, yEnd);
+        this.contextDraft.stroke();
+    }
+
+
+    drawPatternReal(xStart, yStart, xEnd, yEnd) {
+        this.contextReal.lineTo(xStart, yStart);
+        this.contextReal.stroke();
+        this.contextReal.closePath();
+        this.contextReal.beginPath();
+        this.contextReal.moveTo(xEnd, yEnd);
+    }
+
+    onMouseMove() { }
+    onMouseLeave() { }
+    onMouseEnter() { }
+
+}
+

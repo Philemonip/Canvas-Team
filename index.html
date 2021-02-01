@@ -1,84 +1,126 @@
-
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-   
-  </head>
-  <body class="container">
-    <h1>Canvas Application</h1>
-    <div id="canvas-container">
-      <canvas
-        id="canvas-real"
-        class="canvas"
-        width="800px"
-        height="500px"
-      ></canvas>
-      <canvas
-        id="canvas-draft"
-        class="canvas"
-        width="800px"
-        height="500px"
-      ></canvas>
-    </div>
-    <div class="buttons">
-      <!-- The drawing rectangle button  -->
-      <span class="btn btn-primary fa fa-square" id="drawing-rectangle"
-        >Draw Rectangle</span
-      >
-      <!-- The drawing line button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-line"
-        >Draw Line</span
-      > 
-      <!-- jQuery -->
-      <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+</head>
+
+<body class="container">
+  <h1>Canvas Application</h1>
+  <div id="canvas-container">
+    <canvas id="canvas-real" class="canvas" width="800px" height="500px"></canvas>
+    <canvas id="canvas-draft" class="canvas" width="800px" height="500px"></canvas>
+  </div>
+  <div class="buttons">
+    <!-- The drawing rectangle button  -->
+    <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Draw Rectangle</span>
+
+    <span class="btn btn-primary fa fa-square" id="drawing-square">Draw Square</span>
+
+    <!-- The drawing line button  -->
+    <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Draw Line</span>
+
+    <!-- The drawing circle button-->
+    <span class="btn btn-secondary fa fa-paint-brush" id="drawing-circle">Draw Circle</span>
+
+    <span class="btn btn-warning fa fa-paint-brush" id="drawing-ellipse">Draw Ellipse</span>
+
+    <span class="btn btn-danger fa fa-paint-brush" id="drawing-polygon">Draw Polygon</span>
+
+    <span class="btn btn-success fa fa-paint-brush" id="drawing-clear">Clear All</span>
+
+    <span class="btn btn-success fa fa-paint-brush" id="drawing-eraser">Eraser</span>
+
+    <span class="btn btn-success fa fa-paint-brush" id="undo">Undo</span>
+
+    <span class="btn btn-success fa fa-paint-brush" id="redo">Redo</span>
+
+    <span class="btn btn-success fa fa-paint-brush" id="save-image">Save Image</span>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- The drawing functionality  -->
-    <script
-      src="./assets/javascript/canvas-common.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
+    <script src="./assets/javascript/canvas-common.js" type="text/javascript" async defer></script>
 
     <!-- The drawing line functionality  -->
-    <script
-      src="./assets/javascript/drawing-line.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
+    <script src="./assets/javascript/drawing-line.js" type="text/javascript" async defer></script>
     <!-- The drawing rectangle functionality  -->
-    <script
-      src="./assets/javascript/drawing-rectangle.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
+    <script src="./assets/javascript/drawing-rectangle.js" type="text/javascript" async defer></script>
+
+    <script src="./assets/javascript/drawing-square.js" type="text/javascript" async defer></script>
+
+
+    <script src="./assets/javascript/drawing-circle.js" type="text/javascript" async defer></script>
+
+    <script src="./assets/javascript/drawing-ellipse.js" type="text/javascript" async defer></script>
+
+    <script src="./assets/javascript/drawing-polygon.js" type="text/javascript" async defer></script>
+
+    <script src="./assets/javascript/drawing-clear.js" type="text/javascript" async defer></script>
+
+    <script src="./assets/javascript/drawing-eraser.js" type="text/javascript" async defer></script>
+
+    <script src="./assets/javascript/drawing-undo-redo.js" type="text/javascript" async defer></script>
+
     <script type="text/javascript">
-    $(()=>{
-      currentFunction =  new DrawingLine(contextReal)
-      $("#drawing-rectangle").click(() => {
-        currentFunction = new DrawingRectangle(contextReal, contextDraft);
-      });
-      $("#drawing-line").click(() => {
-        currentFunction = new DrawingLine(contextReal);
-      });  
-    })
+      $(() => {
+        currentFunction = new DrawingLine(contextReal)
+        $("#drawing-rectangle").click(() => {
+          currentFunction = new DrawingRectangle(contextReal, contextDraft);
+        });
+
+        $("#drawing-square").click(() => {
+          currentFunction = new DrawingSquare(contextReal, contextDraft);
+        });
+
+        $("#drawing-line").click(() => {
+          currentFunction = new DrawingLine(contextReal);
+        });
+        $("#drawing-circle").click(() => {
+          currentFunction = new DrawingCircle(contextReal, contextDraft);
+        });
+        $("#drawing-ellipse").click(() => {
+          currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
+
+        $("#drawing-polygon").click(() => {
+          currentFunction = new DrawingPolygon(contextReal, contextDraft);
+        });
+        $('#drawing-clear').on("click", function () {
+          cleanCanvas();
+        })
+        $('#drawing-eraser').on("click", function () {
+          currentFunction = new DrawingEraser(contextReal, contextDraft);
+        })
+        $('#save-image').on("click", function (e) {
+
+
+
+          let image = canvasReal.toDataURL();
+          let link = document.createElement("a");
+          link.download = "image.png";
+          link.href = image;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+
+        })
+
+
+
+      })
     </script>
-  </body>
+</body>
+
 </html>
