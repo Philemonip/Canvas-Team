@@ -23,13 +23,13 @@
         id="canvas-real"
         class="canvas"
         width="800px"
-        height="500px"
+        height="450px"
       ></canvas>
       <canvas
         id="canvas-draft"
         class="canvas"
         width="800px"
-        height="500px"
+        height="450px"
       ></canvas>
     </div>
     <div class="buttons">
@@ -40,6 +40,30 @@
       <!-- The drawing line button  -->
       <span class="btn btn-info fa fa-paint-brush" id="drawing-line"
         >Draw Line</span
+      > 
+      <!-- The drawing straight line button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-straight-line"
+        >Draw Straight Line</span
+      > 
+      <!-- The drawing arrow line button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-arrow-line"
+        >Draw Arrow Line</span
+      > 
+      <!-- The drawing bubbles button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-shadow-line"
+        >Draw Shadow Line</span
+      > 
+      <!-- The drawing bubbles button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-fur-line"
+        >Draw Fur Line</span
+      > 
+      <!-- The drawing curve button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-curve"
+        >Draw Curve</span
+      > 
+      <!-- The drawing bubbles button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-bubbles"
+        >Draw Bubbles</span
       > 
       <!-- jQuery -->
       <script
@@ -69,6 +93,48 @@
       async
       defer
     ></script>
+     <!-- The drawing straight line functionality  -->
+     <script
+     src="./assets/javascript/drawing-straightline.js"
+     type="text/javascript"
+     async
+     defer
+   ></script>
+    <!-- The drawing arrow line functionality  -->
+    <script
+    src="./assets/javascript/drawing-arrowline.js"
+    type="text/javascript"
+    async
+    defer
+  ></script>
+  <!-- The drawing shadow line functionality  -->
+  <script
+  src="./assets/javascript/drawing-shadowline.js"
+  type="text/javascript"
+  async
+  defer
+></script>
+    <!-- The drawing fur line functionality  -->
+    <script
+    src="./assets/javascript/drawing-furline.js"
+    type="text/javascript"
+    async
+    defer
+    ></script>
+      <!-- The drawing curve functionality  -->
+     <script
+     src="./assets/javascript/drawing-curve.js"
+     type="text/javascript"
+     async
+     defer
+   ></script>
+    <!-- The drawing bubbles functionality  -->
+    <script
+    src="./assets/javascript/drawing-bubbles.js"
+    type="text/javascript"
+    async
+    defer
+  ></script>
     <script type="text/javascript">
     $(()=>{
       currentFunction =  new DrawingLine(contextReal)
@@ -77,8 +143,26 @@
       });
       $("#drawing-line").click(() => {
         currentFunction = new DrawingLine(contextReal);
-      });  
-    })
+      });
+      $("#drawing-straight-line").click(() => {
+        currentFunction = new DrawingStraightLine(contextReal, contextDraft);  
+      })
+      $("#drawing-arrow-line").click(() => {
+        currentFunction = new DrawingArrowLine(contextReal, contextDraft);  
+      })
+      $("#drawing-shadow-line").click(() => {
+        currentFunction = new DrawingShadowLine(contextReal);  
+      })
+      $("#drawing-fur-line").click(() => {
+        currentFunction = new DrawingFurLine(contextReal);  
+      })
+      $("#drawing-curve").click(() => {
+        currentFunction = new DrawingCurve(contextReal, contextDraft);  
+      })
+      $("#drawing-bubbles").click(() => {
+        currentFunction = new DrawingBubbles(contextReal);  
+      })
+  })
     </script>
   </body>
 </html>
