@@ -104,8 +104,6 @@
         })
         $('#save-image').on("click", function (e) {
 
-
-
           let image = canvasReal.toDataURL();
           let link = document.createElement("a");
           link.download = "image.png";
@@ -113,8 +111,6 @@
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-
-
         })
 
 
