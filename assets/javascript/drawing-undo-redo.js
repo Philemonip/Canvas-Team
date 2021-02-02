@@ -5,7 +5,7 @@ let redolist = [];
 
 function startDraw() {
     var lastMove = canvas[0].toDataURL();
-    console.log(lastMove)
+
     undolist.push(lastMove);
     redolist = [];
 }

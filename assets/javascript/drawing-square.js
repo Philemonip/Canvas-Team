@@ -1,8 +1,4 @@
-/**********************************************
- * Drawing Rectangle Functionality
- * ==================================
- ***********************************************/
-// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
+
 class DrawingSquare extends PaintFunction {
     constructor(contextReal, contextDraft) {
         super();
@@ -23,10 +19,6 @@ class DrawingSquare extends PaintFunction {
 
         this.origX = coord[0];
         this.origY = coord[1];
-
-
-
-
 
     }
     onDragging(coord, event) {

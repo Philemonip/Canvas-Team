@@ -8,12 +8,14 @@ class DrawingRectangle extends PaintFunction {
     super();
     this.contextReal = contextReal;
     this.contextDraft = contextDraft;
-
+    this.escape = false;
   }
 
   onMouseDown(coord, event) {
     // Style Settings: strokestyle, fillstyle, linewidth
 
+
+    this.escape = false;
     this.contextReal.fillStyle = "#751";
     this.contextDraft.setLineDash([]);
     this.contextReal.setLineDash([]);
@@ -29,12 +31,8 @@ class DrawingRectangle extends PaintFunction {
   onDragging(coord, event) {
     // Style Settings: strokestyle, fillstyle, linewidth
     // All on draft
-    $(document).keyup((e) => {
-      if (e.key == 'Escape') {
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        this.escape = true;
-      }
-    });
+
+
 
     this.contextDraft.fillStyle = "#751";
     this.contextDraft.setLineDash([]);
@@ -48,15 +46,26 @@ class DrawingRectangle extends PaintFunction {
     this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
     this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
 
-
     this.contextDraft.fill();
     this.contextDraft.stroke();
     this.contextDraft.closePath();
+
+
+    $(document).keyup((e) => {
+      if (e.key == 'Escape') {
+        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        this.escape = true;
+      }
+
+    });
 
   }
 
   onMouseMove() { }
   onMouseUp(coord) {
+
+
+
     this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
     this.contextReal.beginPath();
     this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
@@ -71,6 +80,7 @@ class DrawingRectangle extends PaintFunction {
     startDraw()
 
   }
-  onMouseLeave() { }
+  onMouseLeave() {
+  }
   onMouseEnter() { }
 }
