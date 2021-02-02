@@ -25,7 +25,7 @@ class DrawingEllipse extends PaintFunction {
         this.contextDraft.fillStyle = "#1319";
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.contextDraft.beginPath();
-        this.contextDraft.ellipse(this.origX, this.origY, Math.abs(coord[0] - this.origX), Math.abs(coord[1] - this.origY), 0 * Math.PI / 180, 0, 2 * Math.PI)
+        this.contextDraft.ellipse(this.origX, this.origY, Math.abs(coord[0] - this.origX), Math.abs(coord[1] - this.origY), Math.PI / 180, 0, 2 * Math.PI)
         this.contextDraft.fill()
         this.contextDraft.stroke();
 
@@ -36,7 +36,7 @@ class DrawingEllipse extends PaintFunction {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.contextReal.beginPath();
 
-        this.contextReal.ellipse(this.origX, this.origY, Math.abs(coord[0] - this.origX), Math.abs(coord[1] - this.origY), 0 * Math.PI / 180, 0, 2 * Math.PI)
+        this.contextReal.ellipse(this.origX, this.origY, Math.abs(coord[0] - this.origX), Math.abs(coord[1] - this.origY), Math.PI / 180, 0, 2 * Math.PI)
         this.contextReal.fill();
         this.contextReal.stroke();
         startDraw();
