@@ -4,10 +4,6 @@ body {
   margin-left: 2vw;;
 }
 
-#toolbar {
-  display: flex;
-  justify-content: space-between;
-}
 
 #logo {
   margin: 10px 0 0 15px;
@@ -104,7 +100,7 @@ p {
   left: 0px;
   right: 0px;
   background-color: white;
-  margin: 1vw 0 0 3vw;
+  margin: auto;
   -webkit-box-shadow: 0 15px 10px #00000066;
   -moz-box-shadow: 0 15px 10px #00000066;
   box-shadow: 0 15px 10px #00000066;
@@ -113,6 +109,17 @@ p {
 .row {
   padding-top: 2px !important;
   padding-bottom: 2px !important;
+}
+.col-12 {
+  height: 100vh;
+}
+.col-2 {
+  width: 17% !important;
+  height: 100%;
+}
+
+#divider {
+  display: flex;
 }
 
 .btn {
