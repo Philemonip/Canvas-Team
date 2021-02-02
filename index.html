@@ -24,8 +24,9 @@
   
   </head>
   <body class="container-fluid">
-    <div class="row" id="toolbar">
-      <div class="col-2">
+    <div class="col-12" id='divider'>
+    <div class="col-2">
+      <div class="row" style="border: 1px solid white;">
         <div class="row" id="logo">
         <h1>Paper Canvas</h1>
         </div>
@@ -47,83 +48,89 @@
           </div>
         </div>
       </div>
-        <div class="col-6" id="buttons">
-          <div class="row">
-            <button type="button" class="btn btn-secondary" id="drawing-line" title="Pen (Free Draw)">
-              <img class="icon-img" src="./assets/images/pen.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-rectangle" title="Rectangle">
-              <img class="icon-img" src="./assets/images/rectangle.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-square" title="Square">
-              <img class="icon-img" src="./assets/images/square.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-polygon" title="Polygon">
-              polygon
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-circle" title="Circle">
-              <img class="icon-img" src="./assets/images/circle.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-bubbles" title="Bubbles">
-              <img class="icon-img" src="./assets/images/bubbles.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-ellipse" title="Oval">
-              <img class="icon-img" src="./assets/images/oval.svg"/>
-            </button>
-            <button type="button" class="btn btn-dark" id="save-image" title="Save">
-              <img class="icon-img" src="./assets/images/save.svg"/>
-            </button>
-            <button type="button" class="btn btn-danger" id="drawing-clear" title="Clear All">
-              <img class="icon-img" src="./assets/images/trash.svg"/>
-            </button>
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
-              <img class="icon-img" src="./assets/images/line.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-curve" title="Curve">
-              <img class="icon-img" src="./assets/images/curve.svg"/>
-            </button>
-            <button type="button" class="btn btn-secondary" id="drawing-fanlike" title="Hairy Line">
-              <img class="icon-img" src="./assets/images/hairy-line.svg"/>
-            </button>
-            <button type="button" class="btn btn-success" id="drawing-furline">
-              furline
-            </button>
-            <button type="button" class="btn btn-success" id="drawing-textbox">
-              Textbox
-            </button>
-            <button type="button" class="btn btn-success">
-              B
-            </button>
-            <button type="button" class="btn btn-dark" id="drawing-eraser" title="Eraser">
-              <img class="icon-img" src="./assets/images/rubber.svg"/>
-            </button>
-            <button type="button" class="btn btn-dark redo" title="Redo">
-              <img class="icon-img" src="./assets/images/redo.svg"/>
-            </button>
-            <button type="button" class="btn btn-warning undo" title="Undo">
-              <img class="icon-img" src="./assets/images/undo.svg"/>
-            </button>
-          </div>
-      </div>
+     <div class="row" style="border: 1px solid white;">
+      <button type="button" class="btn btn-secondary" id="drawing-line" title="Pen (Free Draw)">
+        <img class="icon-img" src="./assets/images/pen.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-rectangle" title="Rectangle">
+        <img class="icon-img" src="./assets/images/rectangle.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-square" title="Square">
+        <img class="icon-img" src="./assets/images/square.svg"/>
+      </button>
     </div>
-    <div class="row">
-      <div class="col-12" id="canvas-container">
-          <canvas
-            id="canvas-real"
-            class="canvas"
-            height="500px"
-            width="800px"
-          ></canvas>
-          <canvas
-            id="canvas-draft"
-            class="canvas"
-            height="500px"
-            width="800px"
-          ></canvas>
-          <input id="textInput" name="inputField" value=""></input>
+    <div class="row" style="border: 1px solid white;">
+      <button type="button" class="btn btn-secondary" id="drawing-polygon" title="Polygon">
+        polygon
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-circle" title="Circle">
+        <img class="icon-img" src="./assets/images/circle.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-bubbles" title="Bubbles">
+        <img class="icon-img" src="./assets/images/bubbles.svg"/>
+      </button>
     </div>
+    <div class="row" style="border: 1px solid white;">
+      <button type="button" class="btn btn-secondary" id="drawing-ellipse" title="Oval">
+        <img class="icon-img" src="./assets/images/oval.svg"/>
+      </button>
+      <button type="button" class="btn btn-dark" id="save-image" title="Save">
+        <img class="icon-img" src="./assets/images/save.svg"/>
+      </button>
+      <button type="button" class="btn btn-danger" id="drawing-clear" title="Clear All">
+        <img class="icon-img" src="./assets/images/trash.svg"/>
+      </button>
+    </div>
+    <div class="row" style="border: 1px solid white;">
+      <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
+        <img class="icon-img" src="./assets/images/line.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-curve" title="Curve">
+        <img class="icon-img" src="./assets/images/curve.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-fanlike" title="Hairy Line">
+        <img class="icon-img" src="./assets/images/hairy-line.svg"/>
+      </button>
+    </div>
+    <div class="row" style="border: 1px solid white;">
+      <button type="button" class="btn btn-success" id="drawing-furline">
+        furline
+      </button>
+      <button type="button" class="btn btn-success" id="drawing-textbox">
+        Textbox
+      </button>
+      <button type="button" class="btn btn-success">
+        B
+      </button>
+    </div>
+    <div class="row" style="border: 1px solid white;">
+      <button type="button" class="btn btn-dark" id="drawing-eraser" title="Eraser">
+        <img class="icon-img" src="./assets/images/rubber.svg"/>
+      </button>
+      <button type="button" class="btn btn-dark redo" title="Redo">
+        <img class="icon-img" src="./assets/images/redo.svg"/>
+      </button>
+      <button type="button" class="btn btn-warning undo" title="Undo">
+        <img class="icon-img" src="./assets/images/undo.svg"/>
+      </button>
+    </div>
+  </div>
+  <div class="col-10" id="canvas-container" style="border: 1px solid white;">
+    <canvas
+      id="canvas-real"
+      class="canvas"
+      height="500px"
+      width="800px"
+    ></canvas>
+    <canvas
+      id="canvas-draft"
+      class="canvas"
+      height="500px"
+      width="800px"
+    ></canvas>
+    <input id="textInput" name="inputField" value=""></input>
+  </div>
+</div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"

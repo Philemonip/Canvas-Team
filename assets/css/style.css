@@ -4,11 +4,6 @@ body {
   margin-left: 2vw;
 }
 
-#toolbar {
-  display: flex;
-  justify-content: space-between;
-}
-
 #logo {
   margin: 10px 0 0 15px;
 }
@@ -106,7 +101,7 @@ p {
   left: 0px;
   right: 0px;
   background-color: white;
-  margin: 1vw 0 0 3vw;
+  margin: auto;
   -webkit-box-shadow: 0 15px 10px #00000066;
   -moz-box-shadow: 0 15px 10px #00000066;
   box-shadow: 0 15px 10px #00000066;
@@ -115,6 +110,17 @@ p {
 .row {
   padding-top: 2px !important;
   padding-bottom: 2px !important;
+}
+.col-12 {
+  height: 100vh;
+}
+.col-2 {
+  width: 17% !important;
+  height: 100%;
+}
+
+#divider {
+  display: flex;
 }
 
 .btn {
@@ -146,23 +152,6 @@ p {
 
 body {
   overflow: hidden;
-}
-
-#canvas-container {
-  height: 80vh;
-  width: 80vh;
-  min-height: 100%;
-  min-width: 100%;
-  overflow: hidden;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: none;
-  -ms-touch-action: none;
-  -webkit-touch-action: none;
 }
 
 #textInput {
