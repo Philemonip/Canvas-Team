@@ -65,6 +65,9 @@ class DrawingPolygon extends PaintFunction {
 
 
     drawPatternDraft(xStart, yStart, xEnd, yEnd) {
+        this.contextDraft.lineJoin = "round";
+        this.contextDraft.lineCap = "round";
+
         this.contextDraft.closePath();
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.contextDraft.beginPath();
@@ -75,6 +78,9 @@ class DrawingPolygon extends PaintFunction {
 
 
     drawPatternReal(xStart, yStart, xEnd, yEnd) {
+        this.contextReal.lineJoin = "round";
+        this.contextReal.lineCap = "round";
+
         this.contextReal.lineTo(xStart, yStart);
         this.contextReal.stroke();
         this.contextReal.closePath();
