@@ -31,7 +31,9 @@
         width="800px"
         height="450px"
       ></canvas>
+      <input id="textInput" name="inputField" value=""></input>
     </div>
+
     <div class="buttons">
       <!-- The drawing rectangle button  -->
       <span class="btn btn-primary fa fa-square" id="drawing-rectangle"
@@ -65,6 +67,10 @@
       <span class="btn btn-info fa fa-paint-brush" id="drawing-bubbles"
         >Draw Bubbles</span
       > 
+       <!-- The drawing textbox button  -->
+       <span class="btn btn-info fa fa-paint-brush" id="drawing-textbox"
+       >Draw Textbox</span
+     > 
       <!-- jQuery -->
       <script
       src="https://code.jquery.com/jquery-3.5.1.js"
@@ -135,6 +141,12 @@
     async
     defer
   ></script>
+  <script
+    src="./assets/javascript/drawing-textbox.js"
+    type="text/javascript"
+    async
+    defer
+  ></script>
     <script type="text/javascript">
     $(()=>{
       currentFunction =  new DrawingLine(contextReal)
@@ -161,6 +173,9 @@
       })
       $("#drawing-bubbles").click(() => {
         currentFunction = new DrawingBubbles(contextReal);  
+      })
+      $("#drawing-textbox").click(() => {
+        currentFunction = new DrawingTextbox(contextReal);  
       })
   })
     </script>

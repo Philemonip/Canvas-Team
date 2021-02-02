@@ -9,7 +9,7 @@ class DrawingFurLine extends PaintFunction {
     this.context.strokeStyle = "#000000";
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    this.context.lineWidth = 3;
+    this.context.lineWidth = 1;
     // this.contextDraft.strokeStyle = canvasSettings.colorStroke;
     // this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.track.push({
@@ -45,7 +45,7 @@ class DrawingFurLine extends PaintFunction {
         this.context.beginPath();
         this.context.strokeStyle = "#000000";
         this.context.moveTo(lastPoint.x + dx * 0.5, lastPoint.y + dy * 0.5);
-        this.context.LineTo(lastPoint.x - dx * 0.5, lastPoint.y - dy * 0.5);
+        this.context.lineTo(lastPoint.x - dx * 0.5, lastPoint.y - dy * 0.5);
         this.context.stroke();
       }
     }
@@ -54,8 +54,8 @@ class DrawingFurLine extends PaintFunction {
   onMouseMove() {}
   onMouseUp() {
     this.track.length = 0;
-    this.onFinish();
   }
+
   onMouseLeave() {}
   onMouseEnter() {}
 
