@@ -9,20 +9,22 @@ class DrawingLine extends PaintFunction {
   onMouseDown(coord, event) {
     this.context.strokeStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
+    this.context.lineCap = "round";
     this.context.lineWidth = canvasSettings.brushSize;
     this.context.beginPath();
     this.context.moveTo(coord[0], coord[1]);
     this.draw(coord[0], coord[1]);
   }
   onDragging(coord, event) {
-
     this.draw(coord[0], coord[1]);
   }
 
-  onMouseMove() { }
-  onMouseUp() { startDraw() }
-  onMouseLeave() { }
-  onMouseEnter() { }
+  onMouseMove() {}
+  onMouseUp() {
+    startDraw();
+  }
+  onMouseLeave() {}
+  onMouseEnter() {}
 
   draw(x, y) {
     this.context.lineTo(x, y);
