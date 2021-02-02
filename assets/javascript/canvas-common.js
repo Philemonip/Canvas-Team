@@ -3,6 +3,9 @@
  * ==================================
  ***********************************************/
 
+
+$("#canvas-real")
+
 let canvasReal = document.getElementById("canvas-real");
 let contextReal = canvasReal.getContext("2d");
 let canvasDraft = document.getElementById("canvas-draft");
@@ -56,4 +59,22 @@ class PaintFunction {
   onMouseUp() {}
   onMouseLeave() {}
   onMouseEnter() {}
+}
+
+var canvasSettings = {
+  //Default Settings
+  colorStroke: $("#colorStroke").val(),
+  colorFill: $("#colorFill").val(),
+  brushSize: $('#brushSize').val(),
+  //Setting Functions
+  changeStroke: function(jscolor){canvasSettings.colorStroke = "#"+jscolor;},
+  changeFill: function(jscolor){canvasSettings.colorFill = "#"+jscolor;},
+}
+
+//Change brush size
+$("#brushSize")[0].oninput = function() {
+  canvasSettings.brushSize = this.value;
+  //Change visual
+  $('.sizeImage').css("width",this.value);
+  $('.sizeImage').css("height",this.value);
 }
