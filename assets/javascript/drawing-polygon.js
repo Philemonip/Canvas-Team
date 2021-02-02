@@ -9,16 +9,15 @@ class DrawingPolygon extends PaintFunction {
 
     onMouseDown(coord, event) {
 
-        // this.contextReal.fillStyle = "#1319";
-        // this.contextReal.beginPath();
-        // this.contextDraft.setLineDash([]);
-        // this.contextReal.setLineDash([]);
+
+        this.contextReal.fillStyle = canvasSettings.colorFill;
+        this.contextReal.strokeStyle = canvasSettings.colorStroke;
+        this.contextDraft.fillStyle = canvasSettings.colorFill;
+        this.contextDraft.strokeStyle = canvasSettings.colorStroke;
         this.contextDraft.lineWidth = canvasSettings.brushSize;
         this.contextReal.lineWidth = canvasSettings.brushSize;
 
-
         if (this.clickNum === 0) {
-
             this.origX = coord[0];
             this.origY = coord[1];
             this.contextReal.beginPath();
@@ -34,35 +33,44 @@ class DrawingPolygon extends PaintFunction {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             this.drawPatternReal(this.destX, this.destY, coord[0], coord[1]);
             this.clickNum = 1;
-
         } else if (this.clickNum === 1) {
-            if (Math.pow((this.origX - coord[0]), 2) < 700 && Math.pow((this.origY - coord[1]), 2) < 2000) {
+            if (
+                Math.pow(this.origX - coord[0], 2) < 700 &&
+                Math.pow(this.origY - coord[1], 2) < 2000
+            ) {
                 dragging = false;
-                this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+                this.contextDraft.clearRect(
+                    0,
+                    0,
+                    canvasDraft.width,
+                    canvasDraft.height
+                );
                 this.contextReal.lineTo(this.origX, this.origY);
                 this.contextReal.stroke();
                 this.clickNum = 0;
-                startDraw()
+                startDraw();
             } else {
                 this.destX = coord[0];
                 this.destY = coord[1];
                 dragging = true;
-                this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+                this.contextDraft.clearRect(
+                    0,
+                    0,
+                    canvasDraft.width,
+                    canvasDraft.height
+                );
                 this.drawPatternReal(this.destX, this.destY, coord[0], coord[1]);
-
             }
         }
     }
 
     onDragging(coord, event) {
-
         if (this.clickNum === 0) {
             this.drawPatternDraft(this.origX, this.origY, coord[0], coord[1]);
         } else if (this.clickNum === 1) {
             this.drawPatternDraft(this.destX, this.destY, coord[0], coord[1]);
         }
     }
-
 
     drawPatternDraft(xStart, yStart, xEnd, yEnd) {
         this.contextDraft.lineJoin = "round";
@@ -76,7 +84,6 @@ class DrawingPolygon extends PaintFunction {
         this.contextDraft.stroke();
     }
 
-
     drawPatternReal(xStart, yStart, xEnd, yEnd) {
         this.contextReal.lineJoin = "round";
         this.contextReal.lineCap = "round";
@@ -86,11 +93,11 @@ class DrawingPolygon extends PaintFunction {
         this.contextReal.closePath();
         this.contextReal.beginPath();
         this.contextReal.moveTo(xEnd, yEnd);
+
+        this.contextReal.fill();
     }
 
     onMouseMove() { }
     onMouseLeave() { }
     onMouseEnter() { }
-
 }
-

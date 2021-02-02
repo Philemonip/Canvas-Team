@@ -10,11 +10,14 @@ class DrawingEllipse extends PaintFunction {
     // contextReal.arc(); x, y, radius, start angle, end angle, false(anticlockwise) true (clockwise)
 
     onMouseDown(coord, event) {
+
+        // this.contextDraft.setLineDash([]);
+        // this.contextReal.setLineDash([]);
+
+
         this.contextReal.fillStyle = canvasSettings.colorFill;
         this.contextReal.strokeStyle = canvasSettings.colorStroke;
         this.contextReal.beginPath();
-        this.contextDraft.setLineDash([]);
-        this.contextReal.setLineDash([]);
         this.contextDraft.lineWidth = canvasSettings.brushSize;
         this.contextReal.lineWidth = canvasSettings.brushSize;
         this.origX = coord[0];
@@ -42,9 +45,6 @@ class DrawingEllipse extends PaintFunction {
         this.contextReal.fill();
         this.contextReal.stroke();
         startDraw();
-
-
-
 
     }
     onMouseLeave() {

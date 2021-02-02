@@ -43,19 +43,18 @@ class DrawingFurLine extends PaintFunction {
         this.context.beginPath();
         this.context.strokeStyle = "#000000";
         this.context.moveTo(lastPoint.x + dx * 0.5, lastPoint.y + dy * 0.5);
-        this.context.LineTo(lastPoint.x - dx * 0.5, lastPoint.y - dy * 0.5);
+        this.context.lineTo(lastPoint.x - dx * 0.5, lastPoint.y - dy * 0.5);
         this.context.stroke();
       }
     }
   }
 
-  onMouseMove() { }
+  onMouseMove() {}
   onMouseUp() {
     this.track.length = 0;
-    this.onFinish();
   }
-  onMouseLeave() { }
-  onMouseEnter() { }
+  onMouseLeave() {}
+  onMouseEnter() {}
 
   // onFinish(){
   //     canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();

@@ -11,11 +11,10 @@ class DrawingFanlike extends PaintFunction {
   }
 
   onDragging(coord, event) {
-    this.contextDraft.lineJoin = "round";
-    this.contextDraft.lineCap = "round";
     this.contextDraft.strokeStyle = canvasSettings.colorStroke;
     this.contextDraft.lineWidth = canvasSettings.brushSize;
-    this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasReal.height);
+    this.contextDraft.lineJoin = "round";
+
     this.contextDraft.beginPath();
     this.contextDraft.moveTo(this.origX, this.origY);
     this.contextDraft.lineTo(coord[0], coord[1]);
@@ -25,10 +24,8 @@ class DrawingFanlike extends PaintFunction {
   onMouseMove() { }
   onMouseUp(coord, event) {
     this.contextReal.lineJoin = "round";
-    this.contextReal.lineCap = "round";
     this.contextReal.strokeStyle = canvasSettings.colorStroke;
     this.contextReal.lineWidth = canvasSettings.brushSize;
-    this.contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
     this.contextReal.beginPath();
     this.contextReal.moveTo(this.origX, this.origY);
     this.contextReal.lineTo(coord[0], coord[1]);
