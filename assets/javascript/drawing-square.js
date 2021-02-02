@@ -10,11 +10,11 @@ class DrawingSquare extends PaintFunction {
     onMouseDown(coord, event) {
         // Style Settings: strokestyle, fillstyle, linewidth
 
-        this.contextReal.fillStyle = "#751";
+        this.contextReal.fillStyle = canvasSettings.colorFill;
         this.contextDraft.setLineDash([]);
         this.contextReal.setLineDash([]);
-        this.contextDraft.lineWidth = 5;
-        this.contextReal.lineWidth = 5;
+        this.contextDraft.lineWidth = canvasSettings.brushSize;
+        this.contextReal.lineWidth = canvasSettings.brushSize;
 
 
         this.origX = coord[0];
@@ -25,11 +25,11 @@ class DrawingSquare extends PaintFunction {
         // Style Settings: strokestyle, fillstyle, linewidth
         // All on draft
 
-        this.contextDraft.fillStyle = "#751";
+        this.contextDraft.fillStyle = canvasSettings.colorFill;
         this.contextDraft.setLineDash([]);
         this.contextReal.setLineDash([]);
-        this.contextDraft.lineWidth = 5;
-        this.contextReal.lineWidth = 5;
+        this.contextDraft.lineWidth = canvasSettings.brushSize;
+        this.contextReal.lineWidth = canvasSettings.brushSize;
 
 
         var width = Math.abs(coord[0] - this.origX) * (coord[0] < this.origX ? -1 : 1);

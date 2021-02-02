@@ -9,11 +9,10 @@ class DrawingBubbles extends PaintFunction {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   onMouseDown(coord, event) {
-    this.context.strokeStyle = "#df4b26";
+    this.context.strokeStyle = canvasSettings.colorStroke;
+    this.context.lineWidth = canvasSettings.brushSize;
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    // this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-    // this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.track.push({
       x: coord[0],
       y: coord[1],

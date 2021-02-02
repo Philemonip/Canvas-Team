@@ -9,7 +9,7 @@ class DrawingEraser extends PaintFunction {
         this.contextReal.strokeStyle = "white";
         this.contextReal.lineJoin = "round";
         this.contextReal.lineCap = "round";
-        this.contextReal.lineWidth = 5;
+        this.contextReal.lineWidth = canvasSettings.brushSize;
 
         this.contextReal.beginPath();
         this.contextReal.moveTo(coord[0], coord[1]);

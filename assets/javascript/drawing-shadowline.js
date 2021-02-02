@@ -17,8 +17,8 @@ class DrawingShadowLine extends PaintFunction {
     this.context.lineWidth = 5;
     this.context.shadowBlur = 10;
     this.context.shadowColor = "#df4b26";
-    // this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-    // this.contextDraft.lineWidth = canvasSettings.brushSize;
+    this.context.strokeStyle = canvasSettings.colorStroke;
+    this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.context.beginPath();
     this.context.moveTo(coord[0], coord[1]);
     this.draw(coord[0], coord[1]);

@@ -16,11 +16,12 @@ class DrawingRectangle extends PaintFunction {
 
 
     this.escape = false;
-    this.contextReal.fillStyle = "#751";
+    this.contextReal.fillStyle = canvasSettings.colorFill;
+    this.contextReal.strokeStyle = canvasSettings.colorStroke;
     this.contextDraft.setLineDash([]);
     this.contextReal.setLineDash([]);
-    this.contextDraft.lineWidth = 5;
-    this.contextReal.lineWidth = 5;
+    this.contextDraft.lineWidth = canvasSettings.brushSize;
+    this.contextReal.lineWidth = canvasSettings.brushSize;
 
 
     this.origX = coord[0];
@@ -34,11 +35,12 @@ class DrawingRectangle extends PaintFunction {
 
 
 
-    this.contextDraft.fillStyle = "#751";
+    this.contextDraft.fillStyle = canvasSettings.colorFill;
+    this.contextDraft.strokeStyle = canvasSettings.colorStroke;
     this.contextDraft.setLineDash([]);
     this.contextReal.setLineDash([]);
-    this.contextDraft.lineWidth = 5;
-    this.contextReal.lineWidth = 5;
+    this.contextDraft.lineWidth = canvasSettings.brushSize;
+    this.contextReal.lineWidth = canvasSettings.brushSize;
 
 
     this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
