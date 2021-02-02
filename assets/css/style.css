@@ -66,6 +66,7 @@ h1, p {
   bottom: 0px;
   left: 0px;
   right: 0px;
+<<<<<<< HEAD
   background-color: white;
   margin: 1vw 0 0 3vw;
   -webkit-box-shadow: 0 15px 10px #00000066;
@@ -76,6 +77,10 @@ h1, p {
 .row {
   padding-top: 2px !important;
   padding-bottom: 2px !important;
+=======
+  margin-top: 50px;
+  margin-left: 50px;
+>>>>>>> 64e1e409d45f478fe7bb6a9d4e9555b34fa9345a
 }
 
 .btn {
@@ -109,3 +114,10 @@ h1, p {
 body {
   overflow: hidden;
 }
+<<<<<<< HEAD
+=======
+#canvas-container {
+  height: 70vh;
+  width: 70vh;
+}
+>>>>>>> 64e1e409d45f478fe7bb6a9d4e9555b34fa9345a
