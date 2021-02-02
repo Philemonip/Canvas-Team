@@ -51,13 +51,13 @@ class DrawingFurLine extends PaintFunction {
     }
   }
 
-  onMouseMove() {}
+  onMouseMove() { }
   onMouseUp() {
     this.track.length = 0;
     this.onFinish();
   }
-  onMouseLeave() {}
-  onMouseEnter() {}
+  onMouseLeave() { }
+  onMouseEnter() { }
 
   // onFinish(){
   //     canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
