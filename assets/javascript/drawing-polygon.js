@@ -13,8 +13,8 @@ class DrawingPolygon extends PaintFunction {
         // this.contextReal.beginPath();
         // this.contextDraft.setLineDash([]);
         // this.contextReal.setLineDash([]);
-        this.contextDraft.lineWidth = 5;
-        this.contextReal.lineWidth = 5;
+        this.contextDraft.lineWidth = canvasSettings.brushSize;
+        this.contextReal.lineWidth = canvasSettings.brushSize;
 
 
         if (this.clickNum === 0) {

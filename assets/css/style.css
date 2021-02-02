@@ -4,6 +4,15 @@ body {
   margin-left: 2vw;;
 }
 
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo {
+  margin: 10px 0 0 15px;
+}
+
 #colorPalette {
   width: 100%;
   display: flex;
@@ -18,11 +27,11 @@ body {
 	border-radius: 20%;
 }
 #colorStroke:active,#colorFill:active {
-	border: 1px solid rgb(0,192,255);
+	border: 1px solid black;
 }
 .colorButton {
 	width: 33px;
-	height: 33px;
+  height: 33px;
 }
 
 #sizeMenu {
@@ -53,11 +62,39 @@ body {
 	width: 5px;
 }
 
-h1, p {
+#settings {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#colorPalette {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 80%;
+}
+
+.colorPicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+
+h1 {
   color: white;
 }
 
+p {
+  color: white;
+  margin-bottom: 0 !important;
+}
 
+#buttons {
+  margin-top: 10px;
+}
 
 .canvas {
   border: none;
