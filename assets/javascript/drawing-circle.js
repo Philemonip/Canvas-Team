@@ -11,11 +11,10 @@ class DrawingCircle extends PaintFunction {
         // Style Settings: strokestyle, fillstyle, linewidth, lineJoin, lineCap
         // All on draft
 
-        this.contextReal.fillStyle = "#1319";
-        this.contextDraft.setLineDash([10, 15]);
-        this.contextReal.setLineDash([10, 15]);
-        this.contextDraft.lineWidth = 10;
-        this.contextReal.lineWidth = 10;
+        this.contextReal.fillStyle = canvasSettings.colorFill;
+        this.contextReal.strokeStyle = canvasSettings.colorStroke;
+        this.contextDraft.lineWidth = canvasSettings.brushSize;
+        this.contextReal.lineWidth = canvasSettings.brushSize;
 
 
         this.contextReal.beginPath();
@@ -23,18 +22,13 @@ class DrawingCircle extends PaintFunction {
         this.origY = coord[1];
     }
     onDragging(coord, event) {
-
-
-
-        this.contextDraft.fillStyle = "#1319";
-
-
+        this.contextDraft.fillStyle = canvasSettings.colorFill;
+        this.contextDraft.strokeStyle = canvasSettings.colorStroke;
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.contextDraft.beginPath();
         this.contextDraft.arc(this.origX, this.origY, Math.sqrt((coord[0] - this.origX) ** 2 + (coord[1] - this.origY) ** 2), 0, 2 * Math.PI);
         this.contextDraft.fill()
         this.contextDraft.stroke();
-
     }
 
     onMouseMove() { }
