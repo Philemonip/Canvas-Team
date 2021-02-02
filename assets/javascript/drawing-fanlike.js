@@ -1,4 +1,4 @@
-class DrawingStraightLine extends PaintFunction {
+class DrawingFanlike extends PaintFunction {
   constructor(contextReal, contextDraft) {
     super();
     this.contextReal = contextReal;
@@ -11,13 +11,10 @@ class DrawingStraightLine extends PaintFunction {
   }
 
   onDragging(coord, event) {
-    this.contextDraft.strokeStyle = "#df4b26";
+    this.contextDraft.strokeStyle = canvasSettings.colorStroke;
+    this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.contextDraft.lineJoin = "round";
-    this.contextDraft.lineWidth = 5;
-    // this.contextDraft.lineCap = "round";
-    //   this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-    // this.contextDraft.lineWidth = canvasSettings.brushSize;
-    this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasReal.height);
+
     this.contextDraft.beginPath();
     this.contextDraft.moveTo(this.origX, this.origY);
     this.contextDraft.lineTo(coord[0], coord[1]);
@@ -26,13 +23,9 @@ class DrawingStraightLine extends PaintFunction {
 
   onMouseMove() {}
   onMouseUp(coord, event) {
-    this.contextReal.strokeStyle = "#df4b26";
     this.contextReal.lineJoin = "round";
-    this.contextReal.lineWidth = 5;
-    // this.contextReal.lineCap = "round";
-    // this.contextReal.strokeStyle = canvasSettings.colorStroke;
-    // this.contextReal.lineWidth = canvasSettings.brushSize;
-    this.contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+    this.contextReal.strokeStyle = canvasSettings.colorStroke;
+    this.contextReal.lineWidth = canvasSettings.brushSize;
     this.contextReal.beginPath();
     this.contextReal.moveTo(this.origX, this.origY);
     this.contextReal.lineTo(coord[0], coord[1]);

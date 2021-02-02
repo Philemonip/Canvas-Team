@@ -6,12 +6,10 @@ class DrawingFurLine extends PaintFunction {
   }
 
   onMouseDown(coord, event) {
-    this.context.strokeStyle = "#000000";
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    this.context.lineWidth = 1;
-    // this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-    // this.contextDraft.lineWidth = canvasSettings.brushSize;
+    this.contextDraft.strokeStyle = canvasSettings.colorStroke;
+    this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.track.push({
       x: coord[0],
       y: coord[1],
@@ -55,7 +53,6 @@ class DrawingFurLine extends PaintFunction {
   onMouseUp() {
     this.track.length = 0;
   }
-
   onMouseLeave() {}
   onMouseEnter() {}
 

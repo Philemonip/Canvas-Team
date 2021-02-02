@@ -1,7 +1,3 @@
-/**********************************************
- * Drawing Line Functionality
- * ==================================
- ***********************************************/
 class DrawingLine extends PaintFunction {
   // This class extends the PaintFunction class
   constructor(contextReal) {
@@ -11,9 +7,10 @@ class DrawingLine extends PaintFunction {
 
   // On mouse down, ensure that the pen has these features
   onMouseDown(coord, event) {
-    this.context.strokeStyle = "#df4b26";
+    this.context.strokeStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
-    this.context.lineWidth = 5;
+    this.context.lineCap = "round";
+    this.context.lineWidth = canvasSettings.brushSize;
     this.context.beginPath();
     this.context.moveTo(coord[0], coord[1]);
     this.draw(coord[0], coord[1]);
@@ -23,7 +20,9 @@ class DrawingLine extends PaintFunction {
   }
 
   onMouseMove() {}
-  onMouseUp() {}
+  onMouseUp() {
+    startDraw();
+  }
   onMouseLeave() {}
   onMouseEnter() {}
 

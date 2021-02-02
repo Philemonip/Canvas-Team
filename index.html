@@ -1,183 +1,240 @@
-
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-   
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"
+  ></script>
+  
   </head>
-  <body class="container">
-    <h1>Canvas Application</h1>
-    <div id="canvas-container">
-      <canvas
-        id="canvas-real"
-        class="canvas"
-        width="800px"
-        height="450px"
-      ></canvas>
-      <canvas
-        id="canvas-draft"
-        class="canvas"
-        width="800px"
-        height="450px"
-      ></canvas>
-      <input id="textInput" name="inputField" value=""></input>
+  <body class="container-fluid">
+    <div class="row" id="toolbar">
+      <div class="col-2">
+        <div class="row" id="logo">
+        <h1>Paper Canvas</h1>
+        </div>
+      </div>
+      <div class="col-4" id="settings">
+        <div id="sizeMenu">
+          <p>Size</p>
+          <div class="showSize"><div class="sizeImage"></div></div>
+          <div class="sizeSlider"><input type="range" min="1" max="51" value="5" step="2" class="slider" id="brushSize"></div>
+        </div>
+        <div id="colorPalette">
+          <div class="colorPicker">
+            <p>Stroke</p>
+            <input type="button" class="jscolor colorButton" value="#000000" onchange="canvasSettings.changeStroke(this.jscolor)" id="colorStroke"></input>
+          </div>
+          <div class="colorPicker">
+            <p>Fill</p>
+            <input type="button" class="jscolor colorButton" value="#ffffff" onchange="canvasSettings.changeFill(this.jscolor)" id="colorFill"></input>
+          </div>
+        </div>
+      </div>
+        <div class="col-6" id="buttons">
+          <div class="row">
+            <button type="button" class="btn btn-secondary" id="drawing-line" title="Pen (Free Draw)">
+              <img class="icon-img" src="./assets/images/pen.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-rectangle" title="Rectangle">
+              <img class="icon-img" src="./assets/images/rectangle.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-square" title="Square">
+              <img class="icon-img" src="./assets/images/square.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-polygon" title="Polygon">
+              polygon
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-circle" title="Circle">
+              <img class="icon-img" src="./assets/images/circle.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-bubbles" title="Bubbles">
+              <img class="icon-img" src="./assets/images/bubbles.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-ellipse" title="Oval">
+              <img class="icon-img" src="./assets/images/oval.svg"/>
+            </button>
+            <button type="button" class="btn btn-dark" id="save-image" title="Save">
+              <img class="icon-img" src="./assets/images/save.svg"/>
+            </button>
+            <button type="button" class="btn btn-danger" id="drawing-clear" title="Clear All">
+              <img class="icon-img" src="./assets/images/trash.svg"/>
+            </button>
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
+              <img class="icon-img" src="./assets/images/line.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-curve" title="Curve">
+              <img class="icon-img" src="./assets/images/curve.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary" id="drawing-fanlike" title="Hairy Line">
+              <img class="icon-img" src="./assets/images/hairy-line.svg"/>
+            </button>
+            <button type="button" class="btn btn-success" id="drawing-furline">
+              furline
+            </button>
+            <button type="button" class="btn btn-success" id="drawing-textbox">
+              Textbox
+            </button>
+            <button type="button" class="btn btn-success">
+              B
+            </button>
+            <button type="button" class="btn btn-dark" id="drawing-eraser" title="Eraser">
+              <img class="icon-img" src="./assets/images/rubber.svg"/>
+            </button>
+            <button type="button" class="btn btn-dark redo" title="Redo">
+              <img class="icon-img" src="./assets/images/redo.svg"/>
+            </button>
+            <button type="button" class="btn btn-warning undo" title="Undo">
+              <img class="icon-img" src="./assets/images/undo.svg"/>
+            </button>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" id="canvas-container">
+          <canvas
+            id="canvas-real"
+            class="canvas"
+            height="500px"
+            width="800px"
+          ></canvas>
+          <canvas
+            id="canvas-draft"
+            class="canvas"
+            height="500px"
+            width="800px"
+          ></canvas>
+          <input id="textInput" name="inputField" value=""></input>
     </div>
 
-    <div class="buttons">
-      <!-- The drawing rectangle button  -->
-      <span class="btn btn-primary fa fa-square" id="drawing-rectangle"
-        >Draw Rectangle</span
-      >
-      <!-- The drawing line button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-line"
-        >Draw Line</span
-      > 
-      <!-- The drawing straight line button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-straight-line"
-        >Draw Straight Line</span
-      > 
-      <!-- The drawing arrow line button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-arrow-line"
-        >Draw Arrow Line</span
-      > 
-      <!-- The drawing bubbles button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-shadow-line"
-        >Draw Shadow Line</span
-      > 
-      <!-- The drawing bubbles button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-fur-line"
-        >Draw Fur Line</span
-      > 
-      <!-- The drawing curve button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-curve"
-        >Draw Curve</span
-      > 
-      <!-- The drawing bubbles button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-bubbles"
-        >Draw Bubbles</span
-      > 
-       <!-- The drawing textbox button  -->
-       <span class="btn btn-info fa fa-paint-brush" id="drawing-textbox"
-       >Draw Textbox</span
-     > 
-      <!-- jQuery -->
-      <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <!-- The drawing functionality  -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- js libraries -->
+    <script src="./assets/javascript/jscolor.min.js"></script>
+    <!-- drawing functions -->
+    <script src="./assets/javascript/canvas-common.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-line.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-straightline.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-arrowline.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-shadowline.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-fanlike.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-furline.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-curve.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-bubbles.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-rectangle.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-square.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-circle.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-ellipse.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-polygon.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-clear.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-eraser.js" type="text/javascript"></script>
+    <script src="./assets/javascript/drawing-undo-redo.js" type="text/javascript"></script>
     <script
-      src="./assets/javascript/canvas-common.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-
-    <!-- The drawing line functionality  -->
-    <script
-      src="./assets/javascript/drawing-line.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-    <!-- The drawing rectangle functionality  -->
-    <script
-      src="./assets/javascript/drawing-rectangle.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-     <!-- The drawing straight line functionality  -->
-     <script
-     src="./assets/javascript/drawing-straightline.js"
-     type="text/javascript"
-     async
-     defer
-   ></script>
-    <!-- The drawing arrow line functionality  -->
-    <script
-    src="./assets/javascript/drawing-arrowline.js"
-    type="text/javascript"
-    async
-    defer
-  ></script>
-  <!-- The drawing shadow line functionality  -->
-  <script
-  src="./assets/javascript/drawing-shadowline.js"
-  type="text/javascript"
-  async
-  defer
-></script>
-    <!-- The drawing fur line functionality  -->
-    <script
-    src="./assets/javascript/drawing-furline.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>
-      <!-- The drawing curve functionality  -->
-     <script
-     src="./assets/javascript/drawing-curve.js"
-     type="text/javascript"
-     async
-     defer
-   ></script>
-    <!-- The drawing bubbles functionality  -->
-    <script
-    src="./assets/javascript/drawing-bubbles.js"
-    type="text/javascript"
-    async
-    defer
-  ></script>
-  <script
     src="./assets/javascript/drawing-textbox.js"
-    type="text/javascript"
-    async
-    defer
-  ></script>
+    type="text/javascript" ></script>
     <script type="text/javascript">
-    $(()=>{
-      currentFunction =  new DrawingLine(contextReal)
-      $("#drawing-rectangle").click(() => {
-        currentFunction = new DrawingRectangle(contextReal, contextDraft);
-      });
-      $("#drawing-line").click(() => {
-        currentFunction = new DrawingLine(contextReal);
-      });
-      $("#drawing-straight-line").click(() => {
-        currentFunction = new DrawingStraightLine(contextReal, contextDraft);  
-      })
-      $("#drawing-arrow-line").click(() => {
-        currentFunction = new DrawingArrowLine(contextReal, contextDraft);  
-      })
-      $("#drawing-shadow-line").click(() => {
-        currentFunction = new DrawingShadowLine(contextReal);  
-      })
-      $("#drawing-fur-line").click(() => {
-        currentFunction = new DrawingFurLine(contextReal);  
-      })
-      $("#drawing-curve").click(() => {
-        currentFunction = new DrawingCurve(contextReal, contextDraft);  
-      })
-      $("#drawing-bubbles").click(() => {
-        currentFunction = new DrawingBubbles(contextReal);  
-      })
-      $("#drawing-textbox").click(() => {
+      $(() => {
+        currentFunction = new DrawingLine(contextReal)
+        $("#drawing-rectangle").click(() => {
+          currentFunction = new DrawingRectangle(contextReal, contextDraft);
+        });
+
+        $("#drawing-square").click(() => {
+          currentFunction = new DrawingSquare(contextReal, contextDraft);
+        });
+
+        $("#drawing-line").click(() => {
+          currentFunction = new DrawingLine(contextReal);
+        });
+
+        $("#drawing-straightline").click(() => {
+          currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        })
+
+        $("#drawing-arrow-line").click(() => {
+          currentFunction = new DrawingArrowLine(contextReal, contextDraft);
+        })
+
+        $("#drawing-shadow-line").click(() => {
+          currentFunction = new DrawingShadowLine(contextReal);
+        })
+
+        $("#drawing-fanlike").click(() => {
+          currentFunction = new DrawingFanlike(contextReal);
+        })
+
+        $("#drawing-fur-line").click(() => {
+          currentFunction = new DrawingFurLine(contextReal);
+        })
+
+        $("#drawing-curve").click(() => {
+          currentFunction = new DrawingCurve(contextReal, contextDraft);
+        })
+
+        $("#drawing-bubbles").click(() => {
+          currentFunction = new DrawingBubbles(contextReal);
+        })
+
+        $("#drawing-circle").click(() => {
+          currentFunction = new DrawingCircle(contextReal, contextDraft);
+        });
+        $("#drawing-ellipse").click(() => {
+          currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
+
+        $("#drawing-polygon").click(() => {
+          currentFunction = new DrawingPolygon(contextReal, contextDraft);
+        });
+        $('#drawing-clear').on("click", function () {
+          if (confirm('Are you sure you want to clear the canvas?')) {
+        clearCanvas();
+        } else {
+        return;
+        }
+        })
+        $('#drawing-eraser').on("click", function () {
+          currentFunction = new DrawingEraser(contextReal, contextDraft);
+        })
+        $("#drawing-textbox").click(() => {
         currentFunction = new DrawingTextbox(contextReal);  
+        })
+        $('#save-image').on("click", function (e) {
+          let image = canvasReal.toDataURL();
+          let link = document.createElement("a");
+          link.download = "image.png";
+          link.href = image;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        $('.undo').on('click', function(){
+          canvasSettings.undoObject.undoAction();
+        });
+        $('.redo').on("click", function(){
+          canvasSettings.undoObject.redoAction();
+        }); 
       })
-  })
+     
     </script>
-  </body>
+</body>
+
 </html>
