@@ -4,6 +4,7 @@ class DrawingEraser extends PaintFunction {
         this.contextReal = contextReal;
     }
 
+
     onMouseDown(coord, event) {
         this.contextReal.strokeStyle = "white";
         this.contextReal.lineJoin = "round";

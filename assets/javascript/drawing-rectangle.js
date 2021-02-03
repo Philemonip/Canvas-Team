@@ -1,8 +1,3 @@
-/**********************************************
- * Drawing Rectangle Functionality
- * ==================================
- ***********************************************/
-// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
 class DrawingRectangle extends PaintFunction {
   constructor(contextReal, contextDraft) {
     super();
@@ -13,13 +8,18 @@ class DrawingRectangle extends PaintFunction {
 
   onMouseDown(coord, event) {
     // Style Settings: strokestyle, fillstyle, linewidth
+    // this.contextDraft.setLineDash([]);
+    // this.contextReal.setLineDash([]);
+    this.contextDraft.lineCap = 'round';
+    this.contextReal.lineCap = 'round';
+    this.contextReal.lineJoin = 'round';
+    this.contextDraft.lineJoin = 'round';
 
 
     this.escape = false;
+
     this.contextReal.fillStyle = canvasSettings.colorFill;
     this.contextReal.strokeStyle = canvasSettings.colorStroke;
-    this.contextDraft.setLineDash([]);
-    this.contextReal.setLineDash([]);
     this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.contextReal.lineWidth = canvasSettings.brushSize;
 
@@ -33,33 +33,32 @@ class DrawingRectangle extends PaintFunction {
     // Style Settings: strokestyle, fillstyle, linewidth
     // All on draft
 
-
+    // this.contextDraft.setLineDash([]);
+    // this.contextReal.setLineDash([]);
 
     this.contextDraft.fillStyle = canvasSettings.colorFill;
     this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-    this.contextDraft.setLineDash([]);
-    this.contextReal.setLineDash([]);
     this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.contextReal.lineWidth = canvasSettings.brushSize;
-
-
-    this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-    this.contextDraft.beginPath();
-    this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
-    this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
-
-    this.contextDraft.fill();
-    this.contextDraft.stroke();
-    this.contextDraft.closePath();
-
 
     $(document).keyup((e) => {
       if (e.key == 'Escape') {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.escape = true;
       }
-
     });
+
+    if (this.escape == false) {
+      this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+      this.contextDraft.beginPath();
+      this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+      this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+
+      this.contextDraft.fill();
+      this.contextDraft.stroke();
+      this.contextDraft.closePath();
+
+    }
 
   }
 
@@ -68,19 +67,18 @@ class DrawingRectangle extends PaintFunction {
 
 
 
-    this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-    this.contextReal.beginPath();
-    this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
-    this.contextReal.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+    if (this.escape == false) {
+      this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+      this.contextReal.beginPath();
+      this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+      this.contextReal.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
 
-    this.contextReal.fill();
-    this.contextReal.stroke();
-    this.contextReal.closePath();
+      this.contextReal.fill();
+      this.contextReal.stroke();
+      this.contextReal.closePath();
 
-
-
-    startDraw()
-
+      startDraw()
+    }
   }
   onMouseLeave() {
   }
