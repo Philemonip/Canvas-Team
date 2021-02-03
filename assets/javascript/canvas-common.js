@@ -2,25 +2,35 @@
  * The Canvas
  * ==================================
  ***********************************************/
+var switcher = 0;
 $(document).ready(function(){
   const viewportHeight = $(window).height();
   const viewportWidth = $(window).width();
+  if (viewportWidth < 1008 && switcher === 0) {
+      $("html").empty();
+      alert("This application requires a wide-screen display\nPlease increase screen size and reload");  
+      switcher++;
+  }
   $('.canvas').each(function(){ 
       var oldHeight = $(this).attr("height"); // Get current height
-      var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.97}`); // Create new height
+      var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.95}`); // Create new height
       $(this).attr("height", newHeight); // Set height value
       var oldWidth = $(this).attr("width"); // Get current width
       var newWidth = oldWidth.replace("800px", `${viewportWidth * 0.75}`); // Create new width
       $(this).attr("width", newWidth); // Set width value
   });
 });
-
 $(window).on("resize", function(){
   const viewportHeight = $(window).height();
   const viewportWidth = $(window).width();
+  if (viewportWidth < 1008 && switcher === 0) {
+    $("html").empty();
+    alert("This application requires a wide-screen display\nPlease increase screen size and reload");  
+    switcher++;
+  }
   $('.canvas').each(function(){ 
       var oldHeight = $(this).attr("height"); // Get current height
-      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.97}`); // Create new height
+      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
       $(this).attr("height", newHeight); // Set height value
       var oldWidth = $(this).attr("width"); // Get current width
       var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.75}`); // Create new width
@@ -103,24 +113,25 @@ var canvasSettings = {
   //Setting Functions
   changeStroke: function(jscolor){canvasSettings.colorStroke = "#"+jscolor;},
   changeFill: function(jscolor){canvasSettings.colorFill = "#"+jscolor;},
+
   undoObject: {
     actionCount: 0,
     states: [],
     savePoint: 0,
-    undoAction: function(){
-      if(canvasSettings.undoObject.actionCount>1){
+    undoAction: function() {
+      if (canvasSettings.undoObject.actionCount > 1) {
         canvasSettings.undoObject.actionCount--;
         canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
         contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount-1],0,0);
       }
     },
-    redoAction: function(){
-      if(canvasSettings.undoObject.actionCount == canvasSettings.undoObject.savePoint && canvasSettings.undoObject.actionCount<canvasSettings.undoObject.states.length){
+    redoAction: function() {
+      if (canvasSettings.undoObject.actionCount == canvasSettings.undoObject.savePoint && canvasSettings.undoObject.actionCount < canvasSettings.undoObject.states.length) {
         canvasSettings.undoObject.actionCount++;
         canvasSettings.undoObject.savePoint++;
         contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount-1],0,0);
       }
-      else if(canvasSettings.undoObject.actionCount != canvasSettings.undoObject.savePoint){
+      else if (canvasSettings.undoObject.actionCount != canvasSettings.undoObject.savePoint){
         canvasSettings.undoObject.states.splice(canvasSettings.undoObject.actionCount);
         canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
       }
