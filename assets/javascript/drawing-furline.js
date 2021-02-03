@@ -8,8 +8,8 @@ class DrawingFurLine extends PaintFunction {
   onMouseDown(coord, event) {
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-    this.contextDraft.lineWidth = canvasSettings.brushSize;
+    this.context.strokeStyle = canvasSettings.colorStroke;
+    this.context.lineWidth = canvasSettings.brushSize;
     this.track.push({
       x: coord[0],
       y: coord[1],
@@ -39,11 +39,14 @@ class DrawingFurLine extends PaintFunction {
       var dy = this.track[i].y - lastPoint.y;
       var d = dx * dx + dy * dy;
 
-      while (d < 2000 && Math.random() > d / 2000) {
+      if (d < 1000) {
         this.context.beginPath();
-        this.context.strokeStyle = "#000000";
-        this.context.moveTo(lastPoint.x + dx * 0.5, lastPoint.y + dy * 0.5);
-        this.context.lineTo(lastPoint.x - dx * 0.5, lastPoint.y - dy * 0.5);
+        this.context.strokeStyle = canvasSettings.colorStroke;
+        this.context.moveTo(lastPoint.x + dx * 0.2, lastPoint.y + dy * 0.2);
+        this.context.lineTo(
+          this.track[i].x - dx * 0.2,
+          this.track[i].y - dy * 0.2
+        );
         this.context.stroke();
       }
     }
