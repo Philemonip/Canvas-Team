@@ -13,41 +13,49 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
     integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-
+    crossorigin="anonymous">
+  </script>
 </head>
 
 <body class="container-fluid">
   <div class="col-12" id='divider'>
     <div class="col-2">
-      <div class="row" style="border: 1px solid white;">
+      <div class="row" ;">
         <div class="row" id="logo">
           <h1>Paper Canvas</h1>
         </div>
       </div>
-      <div class="col-4" id="settings">
-        <div id="sizeMenu">
-          <p>Size</p>
+      <div id="settings" class="row" ;">
+        <div classid="sizeMenu" ;">
+          <p style="font-weight: bold;">Size</p>
           <div class="showSize">
             <div class="sizeImage"></div>
           </div>
           <div class="sizeSlider"><input type="range" min="1" max="51" value="5" step="2" class="slider" id="brushSize">
           </div>
         </div>
-        <div id="colorPalette">
-          <div class="colorPicker">
-            <p>Stroke</p>
-            <input type="button" class="jscolor colorButton" value="#000000"
-              onchange="canvasSettings.changeStroke(this.jscolor)" id="colorStroke"></input>
-          </div>
-          <div class="colorPicker">
-            <p>Fill</p>
-            <input type="button" class="jscolor colorButton" value="#ffffff"
-              onchange="canvasSettings.changeFill(this.jscolor)" id="colorFill"></input>
-          </div>
+        <div id="colorPalette" ;">
+          <table class="colorPicker">
+            <tr>
+              <th>
+                <p>Stroke</p>
+              </th>
+              <th>
+                <input type="button" class="jscolor colorButton" alpha="1" value="#000000" onchange="canvasSettings.changeStroke(this.jscolor)" id="colorStroke"></input>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <p>Fill</p>
+              </th>
+              <th>
+                <input type="button" class="jscolor colorButton" alpha="1" value="#ffffff" onchange="canvasSettings.changeFill(this.jscolor)" id="colorFill"></input>
+              </th>
+            </tr>
+        </table>
         </div>
       </div>
-     <div class="row" style="border: 1px solid white;">
+     <div class="row" id="buttonrow" ;">
       <button type="button" class="btn btn-secondary" id="drawing-line" title="Pen (Free Draw)">
         <img class="icon-img" src="./assets/images/pen.svg"/>
       </button>
@@ -58,9 +66,20 @@
         <img class="icon-img" src="./assets/images/square.svg"/>
       </button>
     </div>
-    <div class="row" style="border: 1px solid white;">
-      <button type="button" class="btn btn-secondary" id="drawing-polygon" title="Polygon">
-        polygon
+    <div class="row" id="buttonrow" ;">
+      <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
+        <img class="icon-img" src="./assets/images/line.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-curve" title="Curve">
+        <img class="icon-img" src="./assets/images/curve.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-furline" title="Jointed Line">
+        <img class="icon-img" src="./assets/images/jointed-line.svg"/>
+      </button>
+    </div>
+    <div class="row" id="buttonrow" ;">
+      <button type="button" class="btn btn-secondary" id="drawing-ellipse" title="Oval">
+        <img class="icon-img" src="./assets/images/oval.svg"/>
       </button>
       <button type="button" class="btn btn-secondary" id="drawing-circle" title="Circle">
         <img class="icon-img" src="./assets/images/circle.svg"/>
@@ -69,9 +88,34 @@
         <img class="icon-img" src="./assets/images/bubbles.svg"/>
       </button>
     </div>
-    <div class="row" style="border: 1px solid white;">
-      <button type="button" class="btn btn-secondary" id="drawing-ellipse" title="Oval">
-        <img class="icon-img" src="./assets/images/oval.svg"/>
+    <div class="row" id="buttonrow" ;">
+      <button type="button" class="btn btn-secondary" id="drawing-polygon" title="Polygon">
+        <img class="icon-img" src="./assets/images/polygon.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-shadowline" title="Spray Paint">
+        <img class="icon-img" src="./assets/images/spray.svg"/>
+      </button>
+      <button type="button" class="btn btn-secondary" id="drawing-textbox" title="Text">
+        <img class="icon-img" src="./assets/images/text.svg"/>
+      </button>
+    </div>
+    <div class="row" id="buttonrow" ;">
+      <button type="button" class="btn btn-dark" id="drawing-eraser" title="Eraser">
+        <img class="icon-img" src="./assets/images/rubber.svg"/>
+      </button>
+      <button type="button" id="redo" class="btn btn-dark" title="Redo">
+        <img class="icon-img" src="./assets/images/redo.svg"/>
+      </button>
+      <button type="button" id="undo" class="btn btn-warning" title="Undo">
+        <img class="icon-img" src="./assets/images/undo.svg"/>
+      </button>
+      <button type="button" class="btn btn-dark" id="import-image" title="Import">
+        <img class="#" src="#"/>
+        </button>
+    </div>
+    <div class="row" id="buttonrow" ;">
+      <button type="button" class="btn btn-success">
+        B
       </button>
       <button type="button" class="btn btn-dark" id="save-image" title="Save">
         <img class="icon-img" src="./assets/images/save.svg"/>
@@ -80,30 +124,8 @@
         <img class="icon-img" src="./assets/images/trash.svg"/>
       </button>
     </div>
-    <div class="row" style="border: 1px solid white;">
-      <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
-        <img class="icon-img" src="./assets/images/line.svg"/>
-      </button>
-      <button type="button" class="btn btn-secondary" id="drawing-curve" title="Curve">
-        <img class="icon-img" src="./assets/images/curve.svg"/>
-      </button>
-      <button type="button" class="btn btn-secondary" id="drawing-furline" title="Fur Line">
-        <img class="icon-img" src="./assets/images/hairy-line.svg"/>
-      </button>
-    </div>
-    <div class="row" style="border: 1px solid white;">
-      <button type="button" class="btn btn-success" id="drawing-shadowline">
-        Shadow
-      </button>
-      <button type="button" class="btn btn-success" id="drawing-textbox">
-        Textbox
-      </button>
-      <button type="button" class="btn btn-dark" id="import-image" title="Import">
-        <img class="#" src="#"/>
-      </button>
-    </div> 
   </div>
-  <div class="col-10" id="canvas-container" style="border: 1px solid white;">
+  <div class="col-10" id="canvas-container" ;">
     <canvas
       id="canvas-real"
       class="canvas"
@@ -142,7 +164,6 @@
     <script src="./assets/javascript/drawing-polygon.js" type="text/javascript"></script>
     <script src="./assets/javascript/drawing-clear.js" type="text/javascript"></script>
     <script src="./assets/javascript/drawing-eraser.js" type="text/javascript"></script>
-    <script src="./assets/javascript/drawing-undo-redo.js" type="text/javascript"></script>
     <script
     src="./assets/javascript/drawing-textbox.js"
     type="text/javascript" ></script>
@@ -204,34 +225,33 @@
         });
         $('#drawing-clear').on("click", function () {
           if (confirm('Are you sure you want to clear the canvas?')) {
-        clearCanvas();
+            clearCanvas();
         } else {
           return;
         }
+        })
+        $('#drawing-eraser').on("click", function () {
+          currentFunction = new DrawingEraser(contextReal, contextDraft);
+        })
+        $("#drawing-textbox").click(() => {
+        currentFunction = new DrawingTextbox(contextReal);  
+        })
+        $('#save-image').on("click", function (e) {
+          let image = canvasReal.toDataURL();
+          let link = document.createElement("a");
+          link.download = "image.png";
+          link.href = image;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        $('#undo').on('click', function(){
+          canvasSettings.undoObject.undoAction();
+        });
+        $('#redo').on("click", function(){
+          canvasSettings.undoObject.redoAction();
+        }); 
       })
-      $('#drawing-eraser').on("click", function () {
-        currentFunction = new DrawingEraser(contextReal, contextDraft);
-      })
-      $("#drawing-textbox").click(() => {
-        currentFunction = new DrawingTextbox(contextReal);
-      })
-      $('#save-image').on("click", function (e) {
-        let image = canvasReal.toDataURL();
-        let link = document.createElement("a");
-        link.download = "image.png";
-        link.href = image;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      })
-      $('.undo').on('click', function () {
-        canvasSettings.undoObject.undoAction();
-      });
-      $('.redo').on("click", function () {
-        canvasSettings.undoObject.redoAction();
-      });
-    })
-
   </script>
 </body>
 

@@ -6,8 +6,7 @@ class DrawingTextbox extends PaintFunction {
     this.fontWeight = 600; //font weight
     this.fontSize = 20; //font size
     this.fontStyle = "Arial"; //font-family
-    this.fillStyle = "orange"; //font color
-    this.strokeStyle = "orange";
+    this.fillStyle = canvasSettings.colorStroke;
     this.textX = [];
     this.textY = [];
   }
@@ -31,8 +30,7 @@ class DrawingTextbox extends PaintFunction {
         "translateY(" + coord[1] + "px) translateX(" + coord[0] + "px)",
       "font-size": this.fontSize + "px",
       //   "font-size": canvasSettings.textSize + "px",
-      color: this.strokeStyle,
-      // color: canvasSettings.colorStroke,
+      color: canvasSettings.colorStroke,
 
       //   "font-family": canvasSettings.textFont,
       "font-weight": this.fontWeight,

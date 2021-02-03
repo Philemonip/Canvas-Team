@@ -10,7 +10,7 @@ class DrawingFurLine extends PaintFunction {
     this.context.lineCap = "round";
     this.contextshadowBlur = 0;
     this.context.strokeStyle = canvasSettings.colorStroke;
-    this.context.lineWidth = canvasSettings.brushSize;
+    this.context.lineWidth = 1;
     this.track.push({
       x: coord[0],
       y: coord[1],

@@ -6,7 +6,13 @@ class DrawingBubbles extends PaintFunction {
     this.context.fillStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    this.context.lineWidth = canvasSettings.brushSize;
+    if (canvasSettings.brushSize > 20) {
+      this.context.lineWidth = 20;
+    } 
+    else {
+      this.context.lineWidth = canvasSettings.brushSize;
+    }
+    
   }
 
   getRandomInt(min, max) {
@@ -16,7 +22,12 @@ class DrawingBubbles extends PaintFunction {
     this.context.fillStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    this.context.lineWidth = canvasSettings.brushSize;
+    if (canvasSettings.brushSize > 20) {
+      this.context.lineWidth = 20;
+    } 
+    else {
+      this.context.lineWidth = canvasSettings.brushSize;
+    }
     this.track.push({
       x: coord[0],
       y: coord[1],
@@ -36,7 +47,7 @@ class DrawingBubbles extends PaintFunction {
         this.context.lineWidth,
         this.context.lineWidth + 10
       ),
-      opacity: Math.random() * 0.03,
+      opacity: Math.random() * 0.015,
     });
     for (var i = 0; i < this.track.length; i++) {
       this.context.beginPath();

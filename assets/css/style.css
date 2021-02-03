@@ -2,6 +2,11 @@ body {
   background: url("../images/bg-texture.png") repeat;
   background-size: 50px;
   margin-left: 2vw;
+  overflow: hidden;
+}
+
+.container-fluid {
+  padding: 0 !important;
 }
 
 #logo {
@@ -15,17 +20,20 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 #colorStroke,
 #colorFill {
   color: transparent !important;
   outline: none;
-  border: 1px solid rgb(152, 152, 152);
-  border-radius: 20%;
+  border: 1px solid grey;
+  border-radius: 50%;
 }
+
 #colorStroke:active,
 #colorFill:active {
   border: 1px solid black;
 }
+
 .colorButton {
   width: 33px;
   height: 33px;
@@ -36,14 +44,15 @@ body {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
+
 #brushSize {
   width: 50px;
 }
 .showSize {
   margin-bottom: 10px;
-  border-radius: 20%;
+  border-radius: 50%;
   background: rgb(204, 204, 204);
   font-size: 3px;
   height: 55px;
@@ -63,6 +72,9 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #colorPalette {
@@ -74,9 +86,10 @@ body {
 }
 
 .colorPicker {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  min-height: 80px;
+}
+
+.colorPicker tr {
   width: 60%;
 }
 
@@ -87,10 +100,12 @@ h1 {
 p {
   color: white;
   margin-bottom: 0 !important;
+  text-align: center !important;
 }
 
-#buttons {
-  margin-top: 10px;
+#buttonrow {
+  display: flex;
+  justify-content: center;
 }
 
 .canvas {
@@ -127,7 +142,7 @@ p {
 .btn {
   margin-right: 2px !important;
   margin-left: 2px !important;
-  border-radius: 50px !important;
+  border-radius: 50% !important;
   -webkit-box-shadow: 5px 5px 10px #00000066;
   -moz-box-shadow: 5px 5px 10px#00000066;
   box-shadow: 5px 5px 10px #00000066;
@@ -149,10 +164,6 @@ p {
 
 #canvas-draft {
   background-color: transparent;
-}
-
-body {
-  overflow: hidden;
 }
 
 #textInput {
