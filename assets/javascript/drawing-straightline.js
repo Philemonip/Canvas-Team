@@ -15,6 +15,8 @@ class DrawingStraightLine extends PaintFunction {
     this.contextDraft.lineJoin = "round";
     this.contextDraft.lineCap = "round";
     this.contextDraft.strokeStyle = canvasSettings.colorStroke;
+    this.contextDraft.shadowBlur = 0;
+    this.contextReal.shadowBlur = 0;
     this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
     this.contextDraft.beginPath();
