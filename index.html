@@ -88,13 +88,13 @@
       <button type="button" class="btn btn-secondary" id="drawing-curve" title="Curve">
         <img class="icon-img" src="./assets/images/curve.svg"/>
       </button>
-      <button type="button" class="btn btn-secondary" id="drawing-fanlike" title="Hairy Line">
+      <button type="button" class="btn btn-secondary" id="drawing-furline" title="Fur Line">
         <img class="icon-img" src="./assets/images/hairy-line.svg"/>
       </button>
     </div>
     <div class="row" style="border: 1px solid white;">
-      <button type="button" class="btn btn-success" id="drawing-furline">
-        furline
+      <button type="button" class="btn btn-success" id="drawing-shadowline">
+        Shadow
       </button>
       <button type="button" class="btn btn-success" id="drawing-textbox">
         Textbox
@@ -181,7 +181,7 @@
           currentFunction = new DrawingArrowLine(contextReal, contextDraft);
         })
 
-        $("#drawing-shadow-line").click(() => {
+        $("#drawing-shadowline").click(() => {
           currentFunction = new DrawingShadowLine(contextReal);
         })
 
@@ -189,7 +189,7 @@
           currentFunction = new DrawingFanlike(contextReal);
         })
 
-        $("#drawing-fur-line").click(() => {
+        $("#drawing-furline").click(() => {
           currentFunction = new DrawingFurLine(contextReal);
         })
 

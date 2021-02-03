@@ -3,24 +3,28 @@ class DrawingBubbles extends PaintFunction {
     super();
     this.context = contextReal;
     this.track = [];
+    this.context.fillStyle = canvasSettings.colorStroke;
+    this.context.lineJoin = "round";
+    this.context.lineCap = "round";
+    this.context.lineWidth = canvasSettings.brushSize;
   }
 
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   onMouseDown(coord, event) {
-    this.context.strokeStyle = canvasSettings.colorStroke;
-    this.context.lineWidth = canvasSettings.brushSize;
+    this.context.fillStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
+    this.context.lineWidth = canvasSettings.brushSize;
     this.track.push({
       x: coord[0],
       y: coord[1],
       radius: this.getRandomInt(
         this.context.lineWidth,
         this.context.lineWidth + 10
-      ),
-      opacity: Math.random() * 0.04, // manually added the 0.04 multiplier to reduce opacity
+      ), //Set max and min of radius
+      opacity: Math.random() * 0.04, // further reduce opacity wuth a mulitplier
     });
   }
 
@@ -32,11 +36,11 @@ class DrawingBubbles extends PaintFunction {
         this.context.lineWidth,
         this.context.lineWidth + 10
       ),
-      opacity: Math.random() * 0.04,
+      opacity: Math.random() * 0.03,
     });
     for (var i = 0; i < this.track.length; i++) {
       this.context.beginPath();
-      this.context.globalOpacity = this.track[i].opacity;
+      this.context.globalAlpha = this.track[i].opacity;
       this.context.arc(
         this.track[i].x,
         this.track[i].y,
@@ -46,13 +50,11 @@ class DrawingBubbles extends PaintFunction {
       );
       this.context.fill(); //this.context.stroke()for unfilled circles
     }
-    //console.log(coord[0],coord[1]);
   }
   onMouseMove() {}
   onMouseUp() {
     this.track.length = 0;
-    this.context.globalOpacity = 1;
-    this.onFinish();
+    this.context.globalAlpha = 1;
   }
   onMouseLeave() {}
   onMouseEnter() {}
