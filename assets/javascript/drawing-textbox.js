@@ -4,10 +4,9 @@ class DrawingTextbox extends PaintFunction {
     this.contextReal = contextReal;
     this.contextDraft = contextDraft;
     this.fontWeight = 600; //font weight
-    this.fontSize = 40; //font size
+    this.fontSize = 20; //font size
     this.fontStyle = "Arial"; //font-family
-    this.fillStyle = "orange"; //font color
-    this.strokeStyle = "orange";
+    this.fillStyle = canvasSettings.colorStroke;
     this.textX = [];
     this.textY = [];
   }
@@ -24,15 +23,14 @@ class DrawingTextbox extends PaintFunction {
     this.textY.push(coord[1]);
 
     //Make the input box appear on the clicked area
-    this.fontStartY = this.textY[0] - this.fontSize;
+
     $("#textInput").css({
       display: "block",
       transform:
         "translateY(" + coord[1] + "px) translateX(" + coord[0] + "px)",
       "font-size": this.fontSize + "px",
       //   "font-size": canvasSettings.textSize + "px",
-      color: this.strokeStyle,
-      // color: canvasSettings.colorStroke,
+      color: canvasSettings.colorStroke,
 
       //   "font-family": canvasSettings.textFont,
       "font-weight": this.fontWeight,
@@ -50,7 +48,7 @@ class DrawingTextbox extends PaintFunction {
   }
 
   //Print the text on the canvas
-  outputText(ctx) {
+  outputText() {
     let inputText = $("#textInput").val();
     this.contextReal.fillText(
       inputText,
