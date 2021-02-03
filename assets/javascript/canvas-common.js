@@ -8,7 +8,7 @@ $(document).ready(function(){
   const viewportWidth = $(window).width();
   if (viewportWidth < 1008 && switcher === 0) {
       $("html").empty();
-      alert("This application requires a wide-screen display\nPlease increase screen size and reload");  
+      alert("This application requires a wide-screen display\nPlease increase window size and reload");  
       switcher++;
   }
   $('.canvas').each(function(){ 
@@ -16,7 +16,7 @@ $(document).ready(function(){
       var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.95}`); // Create new height
       $(this).attr("height", newHeight); // Set height value
       var oldWidth = $(this).attr("width"); // Get current width
-      var newWidth = oldWidth.replace("800px", `${viewportWidth * 0.75}`); // Create new width
+      var newWidth = oldWidth.replace("800px", `${viewportWidth * 0.78}`); // Create new width
       $(this).attr("width", newWidth); // Set width value
   });
 });
@@ -25,7 +25,7 @@ $(window).on("resize", function(){
   const viewportWidth = $(window).width();
   if (viewportWidth < 1008 && switcher === 0) {
     $("html").empty();
-    alert("This application requires a wide-screen display\nPlease increase screen size and reload");  
+    alert("This application requires a wide-screen display\nPlease increase window size and reload");  
     switcher++;
   }
   $('.canvas').each(function(){ 
@@ -33,7 +33,7 @@ $(window).on("resize", function(){
       var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
       $(this).attr("height", newHeight); // Set height value
       var oldWidth = $(this).attr("width"); // Get current width
-      var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.75}`); // Create new width
+      var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.78}`); // Create new width
       $(this).attr("width", newWidth); // Set width value
   });
 });

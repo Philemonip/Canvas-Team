@@ -5,8 +5,17 @@ body {
   overflow: hidden;
 }
 
+.container-fluid {
+  padding: 0 !important;
+}
+
+.col-12 {
+  padding: 0 0 0 15px !important;
+}
+
 #logo {
   margin: 10px 0 0 15px;
+  text-align: center;
 }
 
 #colorPalette {
