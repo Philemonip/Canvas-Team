@@ -8,6 +8,7 @@ class DrawingFurLine extends PaintFunction {
   onMouseDown(coord, event) {
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
+    this.contextshadowBlur = 0;
     this.context.strokeStyle = canvasSettings.colorStroke;
     this.context.lineWidth = canvasSettings.brushSize;
     this.track.push({

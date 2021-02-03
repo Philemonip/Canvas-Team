@@ -21,6 +21,8 @@ class DrawingCurve extends PaintFunction {
       this.contextDraft.lineJoin = "round";
       this.contextDraft.lineCap = "round";
       this.contextDraft.lineWidth = canvasSettings.brushSize;
+      this.contextDraft.shadowBlur = 0;
+      this.contextReal.shadowBlur = 0;
       // this.contextDraft.strokeStyle = canvasSettings.colorStroke;
       this.contextDraft.clearRect(0, 0, canvasReal.width, canvasReal.height);
       this.contextDraft.beginPath();
