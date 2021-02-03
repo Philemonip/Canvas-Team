@@ -10,7 +10,10 @@ class DrawingRectangle extends PaintFunction {
     // Style Settings: strokestyle, fillstyle, linewidth
     // this.contextDraft.setLineDash([]);
     // this.contextReal.setLineDash([]);
-
+    this.contextDraft.lineCap = 'round';
+    this.contextReal.lineCap = 'round';
+    this.contextReal.lineJoin = 'round';
+    this.contextDraft.lineJoin = 'round';
 
 
     this.escape = false;
@@ -38,39 +41,44 @@ class DrawingRectangle extends PaintFunction {
     this.contextDraft.lineWidth = canvasSettings.brushSize;
     this.contextReal.lineWidth = canvasSettings.brushSize;
 
-
-    this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-    this.contextDraft.beginPath();
-    this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
-    this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
-
-    this.contextDraft.fill();
-    this.contextDraft.stroke();
-    this.contextDraft.closePath();
-
-
     $(document).keyup((e) => {
       if (e.key == 'Escape') {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.escape = true;
       }
     });
+
+    if (this.escape == false) {
+      this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+      this.contextDraft.beginPath();
+      this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+      this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+
+      this.contextDraft.fill();
+      this.contextDraft.stroke();
+      this.contextDraft.closePath();
+
+    }
+
   }
 
   onMouseMove() { }
   onMouseUp(coord) {
 
-    this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-    this.contextReal.beginPath();
-    this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
-    this.contextReal.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
 
-    this.contextReal.fill();
-    this.contextReal.stroke();
-    this.contextReal.closePath();
 
-    startDraw()
+    if (this.escape == false) {
+      this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+      this.contextReal.beginPath();
+      this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
+      this.contextReal.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
 
+      this.contextReal.fill();
+      this.contextReal.stroke();
+      this.contextReal.closePath();
+
+      startDraw()
+    }
   }
   onMouseLeave() {
   }
