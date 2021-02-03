@@ -7,7 +7,7 @@ $(document).ready(function(){
   const viewportWidth = $(window).width();
   $('.canvas').each(function(){ 
       var oldHeight = $(this).attr("height"); // Get current height
-      var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.97}`); // Create new height
+      var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.95}`); // Create new height
       $(this).attr("height", newHeight); // Set height value
       var oldWidth = $(this).attr("width"); // Get current width
       var newWidth = oldWidth.replace("800px", `${viewportWidth * 0.75}`); // Create new width
@@ -20,7 +20,7 @@ $(window).on("resize", function(){
   const viewportWidth = $(window).width();
   $('.canvas').each(function(){ 
       var oldHeight = $(this).attr("height"); // Get current height
-      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.97}`); // Create new height
+      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
       $(this).attr("height", newHeight); // Set height value
       var oldWidth = $(this).attr("width"); // Get current width
       var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.75}`); // Create new width

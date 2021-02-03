@@ -31,8 +31,8 @@
         <h1>Paper Canvas</h1>
         </div>
       </div>
-      <div class="col-4" id="settings">
-        <div id="sizeMenu">
+      <div class="" id="settings">
+        <div classid="sizeMenu">
           <p>Size</p>
           <div class="showSize"><div class="sizeImage"></div></div>
           <div class="sizeSlider"><input type="range" min="1" max="51" value="5" step="2" class="slider" id="brushSize"></div>
@@ -40,11 +40,11 @@
         <div id="colorPalette">
           <div class="colorPicker">
             <p>Stroke</p>
-            <input type="button" class="jscolor colorButton" value="#000000" onchange="canvasSettings.changeStroke(this.jscolor)" id="colorStroke"></input>
+            <input type="button" class="jscolor colorButton" alpha="1" value="#000000" onchange="canvasSettings.changeStroke(this.jscolor)" id="colorStroke"></input>
           </div>
           <div class="colorPicker">
             <p>Fill</p>
-            <input type="button" class="jscolor colorButton" value="#ffffff" onchange="canvasSettings.changeFill(this.jscolor)" id="colorFill"></input>
+            <input type="button" class="jscolor colorButton" alpha="1" value="#ffffff" onchange="canvasSettings.changeFill(this.jscolor)" id="colorFill"></input>
           </div>
         </div>
       </div>
@@ -107,10 +107,10 @@
       <button type="button" class="btn btn-dark" id="drawing-eraser" title="Eraser">
         <img class="icon-img" src="./assets/images/rubber.svg"/>
       </button>
-      <button type="button" class="btn btn-dark redo" title="Redo">
+      <button type="button" id="redo" class="btn btn-dark redo" title="Redo">
         <img class="icon-img" src="./assets/images/redo.svg"/>
       </button>
-      <button type="button" class="btn btn-warning undo" title="Undo">
+      <button type="button" id="undo" class="btn btn-warning" title="Undo">
         <img class="icon-img" src="./assets/images/undo.svg"/>
       </button>
     </div>
@@ -233,10 +233,10 @@
           link.click();
           document.body.removeChild(link);
         })
-        $('.undo').on('click', function(){
+        $('#undo').on('click', function(){
           canvasSettings.undoObject.undoAction();
         });
-        $('.redo').on("click", function(){
+        $('#redo').on("click", function(){
           canvasSettings.undoObject.redoAction();
         }); 
       })
