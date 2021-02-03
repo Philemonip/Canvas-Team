@@ -21,7 +21,7 @@ class DrawingFanlike extends PaintFunction {
     this.contextDraft.stroke();
   }
 
-  onMouseMove() {}
+  onMouseMove() { }
   onMouseUp(coord, event) {
     this.contextReal.lineJoin = "round";
     this.contextReal.strokeStyle = canvasSettings.colorStroke;
@@ -31,6 +31,6 @@ class DrawingFanlike extends PaintFunction {
     this.contextReal.lineTo(coord[0], coord[1]);
     this.contextReal.stroke();
   }
-  onMouseLeave() {}
-  onMouseEnter() {}
+  onMouseLeave() { }
+  onMouseEnter() { }
 }

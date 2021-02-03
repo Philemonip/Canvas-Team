@@ -11,14 +11,12 @@ class DrawingShadowLine extends PaintFunction {
 
   // On mouse down, ensure that the pen has these features
   onMouseDown(coord, event) {
-    this.context.strokeStyle = "#df4b26";
+    this.context.strokeStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
     this.context.lineCap = "round";
-    this.context.lineWidth = 5;
-    this.context.shadowBlur = 10;
-    this.context.shadowColor = "#df4b26";
-    this.context.strokeStyle = canvasSettings.colorStroke;
-    this.contextDraft.lineWidth = canvasSettings.brushSize;
+    this.context.lineWidth = canvasSettings.brushSize;
+    this.context.shadowBlur = canvasSettings.brushSize;
+    this.context.shadowColor = canvasSettings.colorStroke;
     this.context.beginPath();
     this.context.moveTo(coord[0], coord[1]);
     this.draw(coord[0], coord[1]);
