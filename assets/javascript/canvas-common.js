@@ -103,6 +103,7 @@ class PaintFunction {
   onMouseUp() { }
   onMouseLeave() { }
   onMouseEnter() { }
+
 }
 
 var canvasSettings = {

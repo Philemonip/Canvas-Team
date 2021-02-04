@@ -55,7 +55,7 @@ class DrawingCircle extends PaintFunction {
     }
   }
 
-  onMouseMove() {}
+  onMouseMove() { }
   onMouseUp(coord) {
     if (this.escape == false) {
       this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -69,9 +69,9 @@ class DrawingCircle extends PaintFunction {
       );
       this.contextReal.fill();
       this.contextReal.stroke();
-      startDraw();
+
     }
   }
-  onMouseLeave() {}
-  onMouseEnter() {}
+  onMouseLeave() { }
+  onMouseEnter() { }
 }
