@@ -79,7 +79,8 @@ class DrawingPolygon extends PaintFunction {
 
         this.coorArr = [];
         this.clickNum = 0;
-        startDraw();
+        this.onFinish();
+        this.actionCount = 0;
       } else {
         this.destX = coord[0];
         this.destY = coord[1];
@@ -130,4 +131,13 @@ class DrawingPolygon extends PaintFunction {
   onMouseMove() {}
   onMouseLeave() {}
   onMouseEnter() {}
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }

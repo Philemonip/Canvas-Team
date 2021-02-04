@@ -66,12 +66,12 @@ class DrawingCurve extends PaintFunction {
       );
       this.contextReal.stroke();
       this.firstLineIsDrawn = false;
+      this.onFinish();
     } else {
       this.contextDraft.strokeStyle = canvasSettings.colorStroke;
       this.contextReal.lineJoin = "round";
       this.contextReal.lineCap = "round";
-      // this.contextReal.strokeStyle = canvasSettings.colorStroke;
-      // this.contextReal.lineWidth = canvasSettings.brushSize;
+      this.contextReal.lineWidth = canvasSettings.brushSize;
       this.endX = coord[0];
       this.endY = coord[1];
       this.contextDraft.clearRect(0, 0, canvasReal.width, canvasReal.height);
@@ -84,4 +84,13 @@ class DrawingCurve extends PaintFunction {
   }
   onMouseLeave() {}
   onMouseEnter() {}
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }

@@ -8,11 +8,9 @@ class DrawingBubbles extends PaintFunction {
     this.context.lineCap = "round";
     if (canvasSettings.brushSize > 20) {
       this.context.lineWidth = 20;
-    } 
-    else {
+    } else {
       this.context.lineWidth = canvasSettings.brushSize;
     }
-    
   }
 
   getRandomInt(min, max) {
@@ -24,8 +22,7 @@ class DrawingBubbles extends PaintFunction {
     this.context.lineCap = "round";
     if (canvasSettings.brushSize > 20) {
       this.context.lineWidth = 20;
-    } 
-    else {
+    } else {
       this.context.lineWidth = canvasSettings.brushSize;
     }
     this.track.push({
@@ -59,20 +56,25 @@ class DrawingBubbles extends PaintFunction {
         0,
         Math.PI * 2
       );
-      this.context.fill(); //this.context.stroke()for unfilled circles
+      this.context.fill();
     }
   }
   onMouseMove() {}
   onMouseUp() {
     this.track.length = 0;
     this.context.globalAlpha = 1;
+    this.onFinish();
   }
   onMouseLeave() {}
   onMouseEnter() {}
 
-  // onFinish(){
-  //     canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
-  //     canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
-  //     canvasSettings.undoObject.actionCount++;
-  // }
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }

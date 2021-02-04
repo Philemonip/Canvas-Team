@@ -19,9 +19,20 @@ class DrawingEraser extends PaintFunction {
     this.draw(coord[0], coord[1]);
   }
   onMouseMove() {}
-  onMouseUp() {}
+  onMouseUp() {
+    this.onFinish();
+  }
   onMouseLeave(coord, event) {}
   onMouseEnter(coord, event) {}
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 
   draw(x, y) {
     this.context.lineTo(x, y);

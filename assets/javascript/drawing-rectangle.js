@@ -8,8 +8,6 @@ class DrawingRectangle extends PaintFunction {
 
   onMouseDown(coord, event) {
     // Style Settings: strokestyle, fillstyle, linewidth
-    // this.contextDraft.setLineDash([]);
-    // this.contextReal.setLineDash([]);
     this.contextDraft.lineCap = "round";
     this.contextReal.lineCap = "round";
     this.contextReal.lineJoin = "round";
@@ -29,10 +27,6 @@ class DrawingRectangle extends PaintFunction {
   }
   onDragging(coord, event) {
     // Style Settings: strokestyle, fillstyle, linewidth
-    // All on draft
-
-    // this.contextDraft.setLineDash([]);
-    // this.contextReal.setLineDash([]);
 
     this.contextDraft.fillStyle = canvasSettings.colorFill;
     this.contextDraft.strokeStyle = canvasSettings.colorStroke;
@@ -95,9 +89,18 @@ class DrawingRectangle extends PaintFunction {
       this.contextReal.stroke();
       this.contextReal.closePath();
 
-      startDraw();
+      this.onFinish();
     }
   }
   onMouseLeave() {}
   onMouseEnter() {}
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }
