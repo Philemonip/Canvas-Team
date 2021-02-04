@@ -2,42 +2,6 @@
  * The Canvas
  * ==================================
  ***********************************************/
-var switcher = 0;
-$(document).ready(function(){
-  const viewportHeight = $(window).height();
-  const viewportWidth = $(window).width();
-  if (viewportWidth < 1008 && switcher === 0) {
-      $("html").empty();
-      alert("This application requires a wide-screen display\nPlease increase window size and reload");  
-      switcher++;
-  }
-  $('.canvas').each(function(){ 
-      var oldHeight = $(this).attr("height"); // Get current height
-      var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.95}`); // Create new height
-      $(this).attr("height", newHeight); // Set height value
-      var oldWidth = $(this).attr("width"); // Get current width
-      var newWidth = oldWidth.replace("800px", `${viewportWidth * 0.78}`); // Create new width
-      $(this).attr("width", newWidth); // Set width value
-  });
-});
-$(window).on("resize", function(){
-  const viewportHeight = $(window).height();
-  const viewportWidth = $(window).width();
-  if (viewportWidth < 1008 && switcher === 0) {
-    $("html").empty();
-    alert("This application requires a wide-screen display\nPlease increase window size and reload");  
-    switcher++;
-  }
-  $('.canvas').each(function(){ 
-      var oldHeight = $(this).attr("height"); // Get current height
-      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
-      $(this).attr("height", newHeight); // Set height value
-      var oldWidth = $(this).attr("width"); // Get current width
-      var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.78}`); // Create new width
-      $(this).attr("width", newWidth); // Set width value
-  });
-});
-
 $("#canvas-real")
 
 let canvasReal = document.getElementById("canvas-real");
@@ -52,8 +16,6 @@ let dragging = false;
 contextReal.fillStyle = "#fff)";
 contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
 
-// contextDraft.fillStyle = "#fff";
-// contextDraft.fillRect(0, 0, canvasDraft.width, canvasDraft.height);
 
 
 $("#canvas-draft").mousedown(function (e) {
@@ -77,6 +39,7 @@ $("#canvas-draft").mouseup(function (e) {
   let mouseX = e.offsetX;
   let mouseY = e.offsetY;
   currentFunction.onMouseUp([mouseX, mouseY], e);
+  canvasSettings.undoObject.actionCount++;
 });
 
 $("#canvas-draft").mouseleave(function (e) {
@@ -105,6 +68,9 @@ class PaintFunction {
   onMouseEnter() { }
 }
 
+
+
+
 var canvasSettings = {
   //Default Settings
   colorStroke: $("#colorStroke").val(),
@@ -122,14 +88,14 @@ var canvasSettings = {
       if (canvasSettings.undoObject.actionCount > 1) {
         canvasSettings.undoObject.actionCount--;
         canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
-        contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount-1],0,0);
+        contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount - 1], 0, 0);
       }
     },
     redoAction: function() {
       if (canvasSettings.undoObject.actionCount == canvasSettings.undoObject.savePoint && canvasSettings.undoObject.actionCount < canvasSettings.undoObject.states.length) {
         canvasSettings.undoObject.actionCount++;
         canvasSettings.undoObject.savePoint++;
-        contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount-1],0,0);
+        contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount - 1], 0, 0);
       }
       else if (canvasSettings.undoObject.actionCount != canvasSettings.undoObject.savePoint){
         canvasSettings.undoObject.states.splice(canvasSettings.undoObject.actionCount);
