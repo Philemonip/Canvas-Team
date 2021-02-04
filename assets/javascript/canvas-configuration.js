@@ -33,12 +33,12 @@ var canvasSettings = {
   textButton: DrawingText,
 
   //Canvas Filter
-  filterImage: function () {},
+  filterImage: function () { },
   //Admin Functions
-  downloadCanvas: function () {},
-  clearCanvas: function () {},
+  downloadCanvas: function () { },
+  clearCanvas: function () { },
   //Bug Fix functions
-  clearText: function () {},
+  clearText: function () { },
   //Undo Function Object
   undoObject: {
     actionCount: 0,
@@ -51,7 +51,7 @@ var canvasSettings = {
           canvasSettings.undoObject.actionCount;
         contextReal.drawImage(
           canvasSettings.undoObject.states[
-            canvasSettings.undoObject.actionCount - 1
+          canvasSettings.undoObject.actionCount - 1
           ],
           0,
           0
@@ -61,15 +61,15 @@ var canvasSettings = {
     redoAction: function () {
       if (
         canvasSettings.undoObject.actionCount ==
-          canvasSettings.undoObject.savePoint &&
+        canvasSettings.undoObject.savePoint &&
         canvasSettings.undoObject.actionCount <
-          canvasSettings.undoObject.states.length
+        canvasSettings.undoObject.states.length
       ) {
         canvasSettings.undoObject.actionCount++;
         canvasSettings.undoObject.savePoint++;
         contextReal.drawImage(
           canvasSettings.undoObject.states[
-            canvasSettings.undoObject.actionCount - 1
+          canvasSettings.undoObject.actionCount - 1
           ],
           0,
           0

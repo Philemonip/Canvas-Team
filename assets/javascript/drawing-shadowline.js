@@ -25,10 +25,13 @@ class DrawingShadowLine extends PaintFunction {
     this.draw(coord[0], coord[1]);
   }
 
-  onMouseMove() {}
-  onMouseUp() {}
-  onMouseLeave() {}
-  onMouseEnter() {}
+  onMouseMove() { }
+  onMouseUp() {
+    this.contextDraft.shadowBlur = 0;
+    this.contextReal.shadowBlur = 0;
+  }
+  onMouseLeave() { }
+  onMouseEnter() { }
 
   draw(x, y) {
     this.context.lineTo(x, y);

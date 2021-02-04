@@ -20,13 +20,13 @@
 <body class="container-fluid">
   <div class="col-12" id='divider'>
     <div class="col-2">
-      <div class="row" ;">
+      <div class="row" ;>
         <div class="row" id="logo">
           <h1>Paper Canvas</h1>
         </div>
       </div>
-      <div id="settings" class="row" ;">
-        <div classid="sizeMenu" ;">
+      <div id="settings" class="row" ;>
+        <div classid="sizeMenu" ;>
           <p style="font-weight: bold;">Size</p>
           <div class="showSize">
             <div class="sizeImage"></div>
@@ -34,7 +34,7 @@
           <div class="sizeSlider"><input type="range" min="1" max="51" value="5" step="2" class="slider" id="brushSize">
           </div>
         </div>
-        <div id="colorPalette" ;">
+        <div id="colorPalette" ;>
           <table class="colorPicker">
             <tr>
               <th>
@@ -57,7 +57,7 @@
           </table>
         </div>
       </div>
-      <div class="row" id="buttonrow" ;">
+      <div class="row" id="buttonrow" ;>
         <button type="button" class="btn btn-secondary" id="drawing-line" title="Pen (Free Draw)">
           <img class="icon-img" src="./assets/images/pen.svg" />
         </button>
@@ -68,7 +68,7 @@
           <img class="icon-img" src="./assets/images/square.svg" />
         </button>
       </div>
-      <div class="row" id="buttonrow" ;">
+      <div class="row" id="buttonrow" ;>
         <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
           <img class="icon-img" src="./assets/images/line.svg" />
         </button>
@@ -79,7 +79,7 @@
           <img class="icon-img" src="./assets/images/jointed-line.svg" />
         </button>
       </div>
-      <div class="row" id="buttonrow" ;">
+      <div class="row" id="buttonrow" ;>
         <button type="button" class="btn btn-secondary" id="drawing-ellipse" title="Oval">
           <img class="icon-img" src="./assets/images/oval.svg" />
         </button>
@@ -90,7 +90,7 @@
           <img class="icon-img" src="./assets/images/bubbles.svg" />
         </button>
       </div>
-      <div class="row" id="buttonrow" ;">
+      <div class="row" id="buttonrow" ;>
         <button type="button" class="btn btn-secondary" id="drawing-polygon" title="Polygon">
           <img class="icon-img" src="./assets/images/polygon.svg" />
         </button>
@@ -100,8 +100,11 @@
         <button type="button" class="btn btn-secondary" id="drawing-textbox" title="Text">
           <img class="icon-img" src="./assets/images/text.svg" />
         </button>
+        <button type="button" class="btn btn-secondary" id="drawing-eyedropper" title="Text">
+          <img class="icon-img" src="./assets/images/text.svg" />
+        </button>
       </div>
-      <div class="row" id="buttonrow" ;">
+      <div class="row" id="buttonrow" ;>
         <button type="button" class="btn btn-dark" id="drawing-eraser" title="Eraser">
           <img class="icon-img" src="./assets/images/rubber.svg" />
         </button>
@@ -115,7 +118,7 @@
           <img class="#" src="#" />
         </button>
       </div>
-      <div class="row" id="buttonrow" ;">
+      <div class="row" id="buttonrow" ;>
         <button type="button" class="btn btn-success">
           B
         </button>
@@ -127,7 +130,7 @@
         </button>
       </div>
     </div>
-    <div class="col-10" id="canvas-container" ;">
+    <div class="col-10" id="canvas-container" ;>
       <canvas id="canvas-real" class="canvas" height="500px" width="800px"></canvas>
       <canvas id="canvas-draft" class="canvas" height="500px" width="800px"></canvas>
       <input id="textInput" name="inputField" value=""></input>
@@ -158,6 +161,7 @@
   <script src="./assets/javascript/drawing-eraser.js" type="text/javascript"></script>
   <script src="./assets/javascript/drawing-textbox.js" type="text/javascript"></script>
   <script src="./assets/javascript/upload-img.js" type="text/javascript"></script>
+  <script src="./assets/javascript/drawing-eyedropper.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(() => {
       currentFunction = new DrawingLine(contextReal)
@@ -238,6 +242,9 @@
       });
       $('#redo').on("click", function () {
         canvasSettings.undoObject.redoAction();
+      });
+      $('#drawing-eyedropper').on("click", function () {
+        currentFunction = new DrawingTextbox(contextReal);
       });
     })
   </script>

@@ -5,21 +5,19 @@ class DrawingEraser extends PaintFunction {
   }
 
   onMouseDown(coord, event) {
-    this.contextReal.strokeStyle = "white";
+    this.contextReal.strokeStyle = "#fff";
     this.contextReal.lineJoin = "round";
     this.contextReal.lineCap = "round";
-    this.contextDraft.shadowBlur = 0;
-    this.contextReal.shadowBlur = 0;
     this.contextReal.lineWidth = canvasSettings.brushSize;
-
+    this.contextReal.shadowBlur = 0;
     this.contextReal.beginPath();
     this.contextReal.moveTo(coord[0], coord[1]);
     this.draw(coord[0], coord[1]);
   }
   onDragging(coord, event) {
     this.draw(coord[0], coord[1]);
-  }
-  onMouseMove() {}
+  } s
+  onMouseMove() { }
   onMouseUp() {
     this.contextReal.closePath();
     this.contextReal.stroke();
