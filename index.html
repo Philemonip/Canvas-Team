@@ -67,6 +67,9 @@
         <button type="button" class="btn btn-secondary" id="drawing-square" title="Square">
           <img class="icon-img" src="./assets/images/square.svg" />
         </button>
+        <button type="button" class="btn btn-secondary" id="drawing-fillbucket" title="Square">
+          <img class="icon-img" src="./assets/images/square.svg" />
+        </button>
       </div>
       <div class="row" id="buttonrow" ;">
         <button type="button" class="btn btn-secondary" id="drawing-straightline" title="Straight Line">
@@ -153,6 +156,8 @@
   <script src="./assets/javascript/drawing-clear.js" type="text/javascript"></script>
   <script src="./assets/javascript/drawing-eraser.js" type="text/javascript"></script>
   <script src="./assets/javascript/drawing-textbox.js" type="text/javascript"></script>
+  <script src="./assets/javascript/drawing-fillbucket.js" type="text/javascript"></script>
+
   <script type="text/javascript">
     $(() => {
       currentFunction = new DrawingLine(contextReal)
@@ -229,6 +234,9 @@
       });
       $('#redo').on("click", function () {
         canvasSettings.undoObject.redoAction();
+      });
+      $('#drawing-fillbucket').on("click", function () {
+        currentFunction = new DrawingFillbucket(contextReal);
       });
     })
   </script>
