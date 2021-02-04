@@ -3,9 +3,9 @@ class DrawingTextbox extends PaintFunction {
     super();
     this.contextReal = contextReal;
     this.contextDraft = contextDraft;
-    this.fontWeight = 600; //font weight
-    this.fontSize = 20; //font size
-    this.fontStyle = "Arial"; //font-family
+    this.fontWeight = 600;
+    this.fontSize = 20;
+    this.fontStyle = "Arial";
     this.fillStyle = canvasSettings.colorStroke;
     this.textX = [];
     this.textY = [];
@@ -14,10 +14,7 @@ class DrawingTextbox extends PaintFunction {
   onMouseDown(coord, event) {
     //Text Properties
     this.contextReal.font = `${this.fontSize}px ${this.fontStyle}`;
-
-    // `${this.fontWeight} ${canvasSettings.textSize}px ${canvasSettings.textFont}`; //check Canvas Setttings to ensure syntax match
-    this.contextReal.fillStyle = this.fillStyle;
-    // this.contextReal.fillStyle = canvasSettings.colorStroke; //check Canvas Setttings to ensure syntax match
+    this.contextReal.fillStyle = canvasSettings.colorStroke;
 
     this.textX.push(coord[0]);
     this.textY.push(coord[1]);
@@ -29,10 +26,7 @@ class DrawingTextbox extends PaintFunction {
       transform:
         "translateY(" + coord[1] + "px) translateX(" + coord[0] + "px)",
       "font-size": this.fontSize + "px",
-      //   "font-size": canvasSettings.textSize + "px",
       color: canvasSettings.colorStroke,
-
-      //   "font-family": canvasSettings.textFont,
       "font-weight": this.fontWeight,
       padding: "0",
     });
@@ -49,21 +43,29 @@ class DrawingTextbox extends PaintFunction {
 
   //Print the text on the canvas
   outputText() {
+    this.contextReal.fillStyle = canvasSettings.colorStroke;
     let inputText = $("#textInput").val();
     this.contextReal.fillText(
       inputText,
       this.textX[0],
       this.textY[0] + parseInt(this.fontSize)
-      //   this.textY[0] + parseInt(canvasSettings.textSize)
     );
-    //contextReal.stroke();
     $("#textInput").css({
       display: "none",
       transform: "translateY(0) translateX(0)",
     });
     $("#textInput").val("");
-    //$('body').find('input[type=text],input').val('');
     this.textX = [];
     this.textY = [];
+    this.onFinish();
+  }
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
   }
 }
