@@ -1,39 +1,32 @@
 class DrawingEraser extends PaintFunction {
   constructor(contextReal) {
     super();
-    this.contextReal = contextReal;
+    this.context = contextReal;
   }
 
   onMouseDown(coord, event) {
-    this.contextReal.strokeStyle = "#fff";
-    this.contextReal.lineJoin = "round";
-    this.contextReal.lineCap = "round";
-    this.contextReal.lineWidth = canvasSettings.brushSize;
-    this.contextReal.shadowBlur = 0;
-    this.contextReal.beginPath();
-    this.contextReal.moveTo(coord[0], coord[1]);
+    this.context.strokeStyle = "white";
+    this.context.lineJoin = "round";
+    this.context.lineCap = "round";
+    this.context.shadowBlur = 0;
+    this.context.lineWidth = canvasSettings.brushSize;
+
+    this.context.beginPath();
+    this.context.moveTo(coord[0], coord[1]);
     this.draw(coord[0], coord[1]);
   }
   onDragging(coord, event) {
     this.draw(coord[0], coord[1]);
-  } s
+  }
   onMouseMove() { }
-  onMouseUp() {
-    this.contextReal.closePath();
-    this.contextReal.stroke();
-  }
-  onMouseLeave(coord, event) {
-    this.contextReal.closePath();
-    this.contextReal.stroke();
-  }
-  onMouseEnter(coord, event) {
-    this.contextReal.beginPath();
-    this.contextReal.moveTo(coord[0], coord[1]);
-  }
+  onMouseUp() { }
+  onMouseLeave(coord, event) { }
+  onMouseEnter(coord, event) { }
+
   draw(x, y) {
-    this.contextReal.lineTo(x, y);
-    this.contextReal.moveTo(x, y);
-    this.contextReal.closePath();
-    this.contextReal.stroke();
+    this.context.lineTo(x, y);
+    this.context.moveTo(x, y);
+    this.context.closePath();
+    this.context.stroke();
   }
 }
