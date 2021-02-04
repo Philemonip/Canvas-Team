@@ -8,10 +8,12 @@ $(document).ready(function () {
   const viewportWidth = $(window).width();
   if (viewportWidth < 1008 && switcher === 0) {
     $("html").empty();
-    alert("This application requires a wide-screen display\nPlease increase screen size and reload");
+    alert(
+      "This application requires a wide-screen display\nPlease increase screen size and reload"
+    );
     switcher++;
   }
-  $('.canvas').each(function () {
+  $(".canvas").each(function () {
     var oldHeight = $(this).attr("height"); // Get current height
     var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.95}`); // Create new height
     $(this).attr("height", newHeight); // Set height value
@@ -25,10 +27,12 @@ $(window).on("resize", function () {
   const viewportWidth = $(window).width();
   if (viewportWidth < 1008 && switcher === 0) {
     $("html").empty();
-    alert("This application requires a wide-screen display\nPlease increase screen size and reload");
+    alert(
+      "This application requires a wide-screen display\nPlease increase screen size and reload"
+    );
     switcher++;
   }
-  $('.canvas').each(function () {
+  $(".canvas").each(function () {
     var oldHeight = $(this).attr("height"); // Get current height
     var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
     $(this).attr("height", newHeight); // Set height value
@@ -38,7 +42,7 @@ $(window).on("resize", function () {
   });
 });
 
-$("#canvas-real")
+$("#canvas-real");
 
 let canvasReal = document.getElementById("canvas-real");
 let contextReal = canvasReal.getContext("2d");
@@ -47,14 +51,9 @@ let contextDraft = canvasDraft.getContext("2d");
 let currentFunction;
 let dragging = false;
 
-
 // for saving image with white background
 contextReal.fillStyle = "#fff)";
 contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
-
-// contextDraft.fillStyle = "#fff";
-// contextDraft.fillRect(0, 0, canvasDraft.width, canvasDraft.height);
-
 
 $("#canvas-draft").mousedown(function (e) {
   let mouseX = e.offsetX;
@@ -92,7 +91,6 @@ $("#canvas-draft").mouseenter(function (e) {
   currentFunction.onMouseEnter([mouseX, mouseY], e);
 });
 
-
 /** # Class (all classes will have these methods) #
 /*  ====================== */
 class PaintFunction {
@@ -103,17 +101,21 @@ class PaintFunction {
   onMouseUp() { }
   onMouseLeave() { }
   onMouseEnter() { }
-
+  onFinish() { }
 }
 
 var canvasSettings = {
   //Default Settings
   colorStroke: $("#colorStroke").val(),
   colorFill: $("#colorFill").val(),
-  brushSize: $('#brushSize').val(),
+  brushSize: $("#brushSize").val(),
   //Setting Functions
-  changeStroke: function (jscolor) { canvasSettings.colorStroke = "#" + jscolor; },
-  changeFill: function (jscolor) { canvasSettings.colorFill = "#" + jscolor; },
+  changeStroke: function (jscolor) {
+    canvasSettings.colorStroke = "#" + jscolor;
+  },
+  changeFill: function (jscolor) {
+    canvasSettings.colorFill = "#" + jscolor;
+  },
 
   undoObject: {
     actionCount: 0,
@@ -122,28 +124,58 @@ var canvasSettings = {
     undoAction: function () {
       if (canvasSettings.undoObject.actionCount > 1) {
         canvasSettings.undoObject.actionCount--;
-        canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
-        contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount - 1], 0, 0);
+        canvasSettings.undoObject.savePoint =
+          canvasSettings.undoObject.actionCount;
+        contextReal.drawImage(
+          canvasSettings.undoObject.states[
+          canvasSettings.undoObject.actionCount - 1
+          ],
+          0,
+          0
+        );
       }
     },
     redoAction: function () {
-      if (canvasSettings.undoObject.actionCount == canvasSettings.undoObject.savePoint && canvasSettings.undoObject.actionCount < canvasSettings.undoObject.states.length) {
+      if (
+        canvasSettings.undoObject.actionCount ==
+        canvasSettings.undoObject.savePoint &&
+        canvasSettings.undoObject.actionCount <
+        canvasSettings.undoObject.states.length
+      ) {
         canvasSettings.undoObject.actionCount++;
         canvasSettings.undoObject.savePoint++;
-        contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount - 1], 0, 0);
+        contextReal.drawImage(
+          canvasSettings.undoObject.states[
+          canvasSettings.undoObject.actionCount - 1
+          ],
+          0,
+          0
+        );
+      } else if (
+        canvasSettings.undoObject.actionCount !=
+        canvasSettings.undoObject.savePoint
+      ) {
+        canvasSettings.undoObject.states.splice(
+          canvasSettings.undoObject.actionCount
+        );
+        canvasSettings.undoObject.savePoint =
+          canvasSettings.undoObject.actionCount;
       }
-      else if (canvasSettings.undoObject.actionCount != canvasSettings.undoObject.savePoint) {
-        canvasSettings.undoObject.states.splice(canvasSettings.undoObject.actionCount);
-        canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
-      }
-    }
-  }
-}
+    },
+  },
+};
 
 //Change brush size
 $("#brushSize")[0].oninput = function () {
   canvasSettings.brushSize = this.value;
   //Change visual
-  $('.sizeImage').css("width", this.value);
-  $('.sizeImage').css("height", this.value);
-}
+  $(".sizeImage").css("width", this.value);
+  $(".sizeImage").css("height", this.value);
+};
+
+//Emoji Styleguide
+
+let styleGuide = {
+  emojiSource: "",
+  emojiLength: 10 + 2.8 * (canvasSettings.brushSize - 1),
+};

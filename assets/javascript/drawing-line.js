@@ -5,7 +5,6 @@ class DrawingLine extends PaintFunction {
     this.context = contextReal;
   }
 
-  // On mouse down, ensure that the pen has these features
   onMouseDown(coord, event) {
     this.context.strokeStyle = canvasSettings.colorStroke;
     this.context.lineJoin = "round";
@@ -22,11 +21,20 @@ class DrawingLine extends PaintFunction {
 
   onMouseMove() { }
   onMouseUp() {
-    beforeDraw()
-
+    this.onFinish();
   }
   onMouseLeave() { }
   onMouseEnter() { }
+
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 
   draw(x, y) {
     this.context.lineTo(x, y);

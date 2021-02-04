@@ -10,7 +10,6 @@ class DrawingCircle extends PaintFunction {
 
   onMouseDown(coord, event) {
     // Style Settings: strokestyle, fillstyle, linewidth, lineJoin, lineCap
-    // All on draft
 
     this.contextReal.fillStyle = canvasSettings.colorFill;
     this.contextReal.strokeStyle = canvasSettings.colorStroke;
@@ -69,9 +68,18 @@ class DrawingCircle extends PaintFunction {
       );
       this.contextReal.fill();
       this.contextReal.stroke();
-
+      this.onFinish();
     }
   }
   onMouseLeave() { }
   onMouseEnter() { }
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }

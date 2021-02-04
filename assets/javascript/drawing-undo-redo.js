@@ -14,6 +14,7 @@ function startDraw() {
 function undo() {
 
     if (dataCount >= 0) {
+        dataCount--;
 
 
 
