@@ -21,9 +21,7 @@ class DrawingLine extends PaintFunction {
   }
 
   onMouseMove() {}
-  onMouseUp() {
-    startDraw();
-  }
+  onMouseUp() {}
   onMouseLeave() {}
   onMouseEnter() {}
 
