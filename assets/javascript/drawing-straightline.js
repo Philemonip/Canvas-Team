@@ -21,7 +21,6 @@ class DrawingStraightLine extends PaintFunction {
     this.contextReal.shadowBlur = 0;
     this.contextDraft.lineWidth = canvasSettings.brushSize;
 
-
     $(document).keyup((e) => {
       if (e.key == "Escape") {
         this.contextDraft.clearRect(
@@ -50,15 +49,24 @@ class DrawingStraightLine extends PaintFunction {
     this.contextReal.strokeStyle = canvasSettings.colorStroke;
     this.contextReal.lineWidth = canvasSettings.brushSize;
 
-
     if (this.escape == false) {
       this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
       this.contextReal.beginPath();
       this.contextReal.moveTo(this.origX, this.origY);
       this.contextReal.lineTo(coord[0], coord[1]);
       this.contextReal.stroke();
+      this.onFinish();
     }
   }
-  onMouseLeave() { }
-  onMouseEnter() { }
+  onMouseLeave() {}
+  onMouseEnter() {}
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }

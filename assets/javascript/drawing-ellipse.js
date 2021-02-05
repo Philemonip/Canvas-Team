@@ -9,9 +9,6 @@ class DrawingEllipse extends PaintFunction {
   // contextReal.arc(); x, y, radius, start angle, end angle, false(anticlockwise) true (clockwise)
 
   onMouseDown(coord, event) {
-    // this.contextDraft.setLineDash([]);
-    // this.contextReal.setLineDash([]);
-
     this.contextReal.fillStyle = canvasSettings.colorFill;
     this.contextReal.strokeStyle = canvasSettings.colorStroke;
     this.contextDraft.shadowBlur = 0;
@@ -73,11 +70,20 @@ class DrawingEllipse extends PaintFunction {
       );
       this.contextReal.fill();
       this.contextReal.stroke();
-      startDraw();
+      this.onFinish();
     }
   }
   onMouseLeave() {
     this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
   }
   onMouseEnter() {}
+  onFinish() {
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ] = new Image();
+    canvasSettings.undoObject.states[
+      canvasSettings.undoObject.actionCount
+    ].src = canvasReal.toDataURL();
+    canvasSettings.undoObject.actionCount++;
+  }
 }
