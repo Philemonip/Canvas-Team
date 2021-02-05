@@ -9,8 +9,13 @@ body {
   padding: 0 !important;
 }
 
+.col-12 {
+  padding: 0 0 0 15px !important;
+}
+
 #logo {
   margin: 10px 0 0 15px;
+  text-align: center;
 }
 
 #colorPalette {
@@ -39,6 +44,13 @@ body {
   height: 33px;
 }
 
+#buttons {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 #sizeMenu {
   width: 100%;
   padding: 5px;
@@ -51,7 +63,7 @@ body {
   width: 50px;
 }
 .showSize {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-radius: 50%;
   background: rgb(204, 204, 204);
   font-size: 3px;
@@ -70,11 +82,12 @@ body {
 
 #settings {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 170px;
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 10px;
 }
 
 #colorPalette {
@@ -105,7 +118,7 @@ p {
 
 #buttonrow {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .canvas {
@@ -121,6 +134,40 @@ p {
   -webkit-box-shadow: 0 15px 10px #00000066;
   -moz-box-shadow: 0 15px 10px #00000066;
   box-shadow: 0 15px 10px #00000066;
+}
+
+@media (max-width: 1007px) and (min-width: 761px) {
+  .canvas {
+    border: none;
+    position: absolute;
+    overflow: hidden;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: white;
+    margin: 5px 0 0 7px;
+    -webkit-box-shadow: 0 15px 10px #00000066;
+    -moz-box-shadow: 0 15px 10px #00000066;
+    box-shadow: 0 15px 10px #00000066;
+  }
+}
+
+@media (max-width: 760px) {
+  .canvas {
+    border: none;
+    position: absolute;
+    overflow: hidden;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: white;
+    margin: 0 0 0 5px;
+    -webkit-box-shadow: 0 15px 10px #00000066;
+    -moz-box-shadow: 0 15px 10px #00000066;
+    box-shadow: 0 15px 10px #00000066;
+  }
 }
 
 .row {
@@ -187,14 +234,14 @@ p {
 }
 
 .emoji-image {
-  width: 38px;
-  height: 38px;
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 #emojirow {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #emoji-inside-row {

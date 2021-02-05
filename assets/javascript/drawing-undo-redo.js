@@ -1,36 +1,42 @@
-let ourCanvas = $('#canvas-real');
-let dataCount = -1;
-let dataStack = [];
+let canvas = $('#canvas-real');
+let undolist = [];
+let redolist = [];
+
 
 function startDraw() {
-    var lastMove = ourCanvas.toDataURL();
-    dataCount++;
-    if (dataCount < dataStack.length) {
-        dataStack.length = dataCount
-    };
-    dataStack.push(lastMove);
+    var lastMove = canvas[0].toDataURL();
+
+    undolist.push(lastMove);
+    redolist = [];
 }
 
-function undo() {
+$('#undo').click(function undo(e) {
 
-    if (dataCount >= 0) {
-        dataCount--;
+    if (undolist.length === 0) {
+        return;
 
-
-
-
+    } else if (undolist.length === 1) {
+        contextReal.fillStyle = "#ffffff";
+        contextReal.fillRect(0, 0, canvasDraft.width, canvasDraft.height);
+    } else if (undolist.length > 1) {
+        var lastStep = new Image();
+        lastStep.src = undolist[undolist.length - 2];
+        lastStep.onload = function () {
+            contextReal.drawImage(lastStep, 0, 0);
+        };
     }
-}
+    redolist.push(undolist.pop());
+})
 
-function redo() {
-    if (redoDataStack.length > 0) {
+$('#redo').click(function redo() {
+    if (redolist.length > 0) {
         var nextStep = new Image();
-        nextStep.src = redoDataStack[redoDataStack.length - 1];
+        nextStep.src = redolist[redolist.length - 1];
         nextStep.onload = function () {
             contextReal.drawImage(nextStep, 0, 0);
         };
-        undoDataStack.push(redoDataStack.pop());
+        undolist.push(redolist.pop());
     }
 
-
 }
+)

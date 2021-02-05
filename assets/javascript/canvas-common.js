@@ -6,40 +6,71 @@ var switcher = 0;
 $(document).ready(function () {
   const viewportHeight = $(window).height();
   const viewportWidth = $(window).width();
-  if (viewportWidth < 1008 && switcher === 0) {
-    $("html").empty();
-    alert(
-      "This application requires a wide-screen display\nPlease increase screen size and reload"
-    );
-    switcher++;
-  }
-  $(".canvas").each(function () {
-    var oldHeight = $(this).attr("height"); // Get current height
-    var newHeight = oldHeight.replace("500px", `${viewportHeight * 0.95}`); // Create new height
-    $(this).attr("height", newHeight); // Set height value
-    var oldWidth = $(this).attr("width"); // Get current width
-    var newWidth = oldWidth.replace("800px", `${viewportWidth * 0.75}`); // Create new width
-    $(this).attr("width", newWidth); // Set width value
-  });
+  // if (viewportWidth < 761) {
+  //   $('.canvas').each(function(){ 
+  //     var oldHeight = $(this).attr("height"); // Get current height
+  //     var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.6}`); // Create new height
+  //     $(this).attr("height", newHeight); // Set height value
+  //     var oldWidth = $(this).attr("width"); // Get current width
+  //     var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.96}`); // Create new width
+  //     $(this).attr("width", newWidth); // Set width value
+  // });
+  // }
+  // else if (viewportWidth < 1008 && viewportWidth > 760) {
+  //   $('.canvas').each(function(){ 
+  //       var oldHeight = $(this).attr("height"); // Get current height
+  //       var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.77}`); // Create new height
+  //       $(this).attr("height", newHeight); // Set height value
+  //       var oldWidth = $(this).attr("width"); // Get current width
+  //       var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.98}`); // Create new width
+  //       $(this).attr("width", newWidth); // Set width value
+  //   });
+  // }
+  // else {
+    $(".canvas").each(function () {
+      var oldHeight = $(this).attr("height"); // Get current height
+      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
+      $(this).attr("height", newHeight); // Set height value
+      var oldWidth = $(this).attr("width"); // Get current width
+      var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.75}`); // Create new width
+      $(this).attr("width", newWidth); // Set width value
+    });
+  // }
 });
+
 $(window).on("resize", function () {
   const viewportHeight = $(window).height();
   const viewportWidth = $(window).width();
-  if (viewportWidth < 1008 && switcher === 0) {
-    $("html").empty();
-    alert(
-      "This application requires a wide-screen display\nPlease increase screen size and reload"
-    );
-    switcher++;
-  }
-  $(".canvas").each(function () {
-    var oldHeight = $(this).attr("height"); // Get current height
-    var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
-    $(this).attr("height", newHeight); // Set height value
-    var oldWidth = $(this).attr("width"); // Get current width
-    var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.75}`); // Create new width
-    $(this).attr("width", newWidth); // Set width value
-  });
+  // if (viewportWidth < 761) {
+  //   $('.canvas').each(function(){ 
+  //     var oldHeight = $(this).attr("height"); // Get current height
+  //     var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.6}`); // Create new height
+  //     $(this).attr("height", newHeight); // Set height value
+  //     var oldWidth = $(this).attr("width"); // Get current width
+  //     var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.98}`); // Create new width
+  //     $(this).attr("width", newWidth); // Set width value
+  // });
+  // }
+  // else if (viewportWidth < 1008 && viewportWidth > 760) {
+  //   $('.canvas').each(function(){ 
+  //       var oldHeight = $(this).attr("height"); // Get current height
+  //       var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.7}`); // Create new height
+  //       $(this).attr("height", newHeight); // Set height value
+  //       var oldWidth = $(this).attr("width"); // Get current width
+  //       var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.99}`); // Create new width
+  //       $(this).attr("width", newWidth); // Set width value
+  //   });
+  // }
+  // else {
+    $(".canvas").each(function () {
+      var oldHeight = $(this).attr("height"); // Get current height
+      var newHeight = oldHeight.replace(oldHeight, `${viewportHeight * 0.95}`); // Create new height
+      $(this).attr("height", newHeight); // Set height value
+      var oldWidth = $(this).attr("width"); // Get current width
+      var newWidth = oldWidth.replace(oldWidth, `${viewportWidth * 0.75}`); // Create new width
+      $(this).attr("width", newWidth); // Set width value
+    });
+  // }
 });
 
 $("#canvas-real");
@@ -76,6 +107,7 @@ $("#canvas-draft").mouseup(function (e) {
   let mouseX = e.offsetX;
   let mouseY = e.offsetY;
   currentFunction.onMouseUp([mouseX, mouseY], e);
+  canvasSettings.undoObject.actionCount++;
 });
 
 $("#canvas-draft").mouseleave(function (e) {
@@ -103,6 +135,9 @@ class PaintFunction {
   onMouseEnter() { }
   onFinish() { }
 }
+
+
+
 
 var canvasSettings = {
   //Default Settings
@@ -179,3 +214,4 @@ let styleGuide = {
   emojiSource: "",
   emojiLength: 10 + 2.8 * (canvasSettings.brushSize - 1),
 };
+
