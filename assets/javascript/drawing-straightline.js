@@ -42,7 +42,7 @@ class DrawingStraightLine extends PaintFunction {
     }
   }
 
-  onMouseMove() {}
+  onMouseMove() { }
   onMouseUp(coord, event) {
     this.contextReal.lineJoin = "round";
     this.contextReal.lineCap = "round";

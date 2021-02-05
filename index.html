@@ -18,14 +18,14 @@
 </head>
 
 <body class="container-fluid">
-  <div class="col-12" id='divider'>
+  <div class="col-12" id="divider">
     <div class="col-2">
       <div class="row">
         <div class="row" id="logo">
           <h1>Paper Canvas</h1>
         </div>
       </div>
-      <div id="settings" class="row">
+      <div id="settings">
         <div classid="sizeMenu">
           <p style="font-weight: bold;">Size</p>
           <div class="showSize">
@@ -55,6 +55,7 @@
         </table>
         </div>
       </div>
+    <div id="buttons">
      <div class="row" id="buttonrow">
       <button type="button" class="btn btn-secondary function-btn" id="drawing-line" title="Pen (Free Draw)">
         <img class="icon-img" src="./assets/images/pen.svg"/>
@@ -111,10 +112,10 @@
       </button>
     </div>
     <div class="row" id="buttonrow">
-      <button type="button" class="btn btn-success " id="drawing-emoji">
-        <i class="far fa-lg fa-smile-wink"></i>
+      <button type="button" class="btn btn-success" id="drawing-emoji">
+        <img class="icon-img" src="./assets/images/emoji.svg"/>
       </button>
-      <button type="button" class="btn btn-dark function-btn" id="save-image" title="Save">
+      <button type="button" class="btn btn-dark function-btn" id="save-image" title="Save and Download">
         <img class="icon-img" src="./assets/images/save.svg"/>
       </button>
       <button type="button" class="btn btn-danger function-btn" id="drawing-clear" title="Clear All">
@@ -145,7 +146,7 @@
       <button type="button" class="emoji-square-mini" id="emoji-square-mini-9"><img class= "emoji-image" id="pic9" src="./assets/images/emojis/9.png">
       </button>
     </div>
-    
+  </div>>
   </div>
   <div class="col-10" id="canvas-container">
     <canvas
@@ -170,6 +171,7 @@
     <!-- js libraries -->
     <script src="./assets/javascript/jscolor.min.js"></script>
     <!-- drawing functions -->
+    <!-- <script src="./assets/javascript/resizer.js" type="text/javascript"></script> -->
     <script src="./assets/javascript/canvas-common.js" type="text/javascript"></script>
     <script src="./assets/javascript/undo.js" type="text/javascript"></script>
     <script src="./assets/javascript/drawing-line.js" type="text/javascript"></script>
