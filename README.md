@@ -1,6 +1,8 @@
-# Canvas-Team
+# Paper Canvas
 
-In this Canvas Project, we have the following functions:
+The Paper Canvas project is a modern themed drawing application which can be viewed at: https://paper-canvas.surge.sh/ 
+
+The application has the following functions:
 
 - Simple drawing (pencil)
 - Drawing bubbles
